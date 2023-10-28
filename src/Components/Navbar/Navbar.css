@@ -1,0 +1,31 @@
+#Navbar {
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  border: 3px solid black;
+}
+#Nombre{
+    font-size: 30px;
+}
+
+#Nombre-light {
+  color: black; /* Color de texto para el tema claro */
+}
+
+#Nombre-dark {
+  color: white; /* Color de texto para el tema oscuro */
+}
+.toggle {
+  margin-right: 15px;
+  margin-top: 3px;
+}
+#ladoIzq {
+  padding-right: 15px;
+}
+
+#carrito{
+    margin-right: 15px;
+}
