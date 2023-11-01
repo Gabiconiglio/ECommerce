@@ -1,0 +1,24 @@
+#tituloGames {
+  margin-top: 100px;
+  margin-left: 400px;
+  font-size: 70px;
+
+}
+#drawerGames {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+#CardProducto {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 150px;
+}
+.card {
+  width: calc(25% - 16px);
+  margin: 8px;
+}
+
+.test{
+  background-color: black;
+  width: 0;
+}

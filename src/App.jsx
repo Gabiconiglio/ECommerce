@@ -1,15 +1,12 @@
-import Navbar from"./Components/Navbar/Navbar.jsx";
-import Footer from"./Components/Footer/Footer.jsx";
-import './App.css'
+import Diagram from "./Routes/Diagram.jsx";
+import "./App.css";
 
 function App() {
-  
   return (
     <>
-      <Navbar/>
-      <Footer/>
+      <Diagram />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

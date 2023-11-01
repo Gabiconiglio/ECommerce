@@ -1,0 +1,14 @@
+.input-wrapper {
+  overflow: hidden;
+  max-width: 0;
+  transition: max-width 0.3s ease-in-out;
+}
+
+.input-visible {
+  max-width: 200px;
+  transition: max-width 0.3s ease-in-out;
+}
+
+#textoBuscador{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

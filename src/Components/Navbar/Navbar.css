@@ -7,17 +7,36 @@
   z-index: 100;
   border: 3px solid black;
 }
-#Nombre{
-    font-size: 30px;
+#textoDropHome {
+  font-size: 40px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+#logo{
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  padding: auto;
 }
 
-#Nombre-light {
-  color: black; /* Color de texto para el tema claro */
+#icono {
+  width: 45px;
+  height: 45px;
 }
 
-#Nombre-dark {
-  color: white; /* Color de texto para el tema oscuro */
+#NombreTitulo {
+  font-size: 50px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
+
+#iconoToggle{
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
 .toggle {
   margin-right: 15px;
   margin-top: 3px;
@@ -26,6 +45,6 @@
   padding-right: 15px;
 }
 
-#carrito{
-    margin-right: 15px;
+#carrito {
+  margin-right: 15px;
 }
