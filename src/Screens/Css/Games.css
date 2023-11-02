@@ -2,6 +2,11 @@
   margin-top: 100px;
   margin-left: 400px;
   font-size: 70px;
+  display: flex;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+
 }
 #drawerGames {
   margin-top: 100px;

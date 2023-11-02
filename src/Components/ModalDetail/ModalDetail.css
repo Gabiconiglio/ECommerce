@@ -1,0 +1,13 @@
+#textModalDetail{
+    text-align: center;
+    border-bottom: 2px solid black;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+#InfoDetail{
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+    margin-top: 2px;
+
+}

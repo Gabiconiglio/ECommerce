@@ -1,22 +1,43 @@
-.card{
+.card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-left: 50px;
   margin-right: 50px;
 }
-.card-title{
+.card-title {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-bottom: 2px solid black;
+  text-align: left;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
-.textoCard{
+.textoCard {
   display: flex;
   text-align: center;
   justify-content: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
-.textoCard p{
+.textoCard p {
   margin: 15px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.join {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+#iconoModalInfo {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  display: flex;
+  text-align: right;
+  justify-content: right;
 }

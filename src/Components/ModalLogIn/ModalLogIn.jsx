@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { AiOutlineUser } from "react-icons/Ai";
-import { RiLockPasswordLine } from "react-icons/Ri";
-import { AiOutlineClose } from "react-icons/Ai";
+import { AiOutlineUser,AiOutlineClose } from "react-icons/ai";
+import { RiLockPasswordLine } from "react-icons/ri";
 import "../ModalLogIn/ModalLogIn.css";
 
 function ModalLogIn() {

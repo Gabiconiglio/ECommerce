@@ -6,7 +6,7 @@ import "../Screens/Css/Games.css";
 
 function Games() {
   const [videoGames, setVideoGames] = useState([]);
-  const [prices, setPrices] = useState([]); 
+  const [prices, setPrices] = useState([]);
 
   const handleRandomPrices = () => {
     const min = 2000;
@@ -20,10 +20,10 @@ function Games() {
     const randomIndex = Math.floor(Math.random() * conditions.length);
     return conditions[randomIndex];
   };
-  const getRandomPlataform = () => {
-    const Plataform = ["0","1","2"];
-    const randomIndex = Math.floor(Math.random() * Plataform.length);
-    return Plataform[randomIndex];
+  const getRandomPlatform = () => {
+    const Platform = ["0", "1"];
+    const randomIndex = Math.floor(Math.random() * Platform.length);
+    return Platform[randomIndex];
   };
 
   const getRandomFormat = () => {
@@ -36,11 +36,8 @@ function Games() {
     fetch(Url_Games + api_key)
       .then((res) => res.json())
       .then((data) => {
-        const results = data.results;
-        setVideoGames(results);
-        console.log(results)
-        
-        const randomPrices = results.map(() => handleRandomPrices());
+        setVideoGames(data.results);
+        const randomPrices = data.results.map(() => handleRandomPrices());
         setPrices(randomPrices);
       });
   }, []);
@@ -59,12 +56,18 @@ function Games() {
               .map((gamer, index) => (
                 <Cards
                   key={gamer.id}
+                  customKey={gamer.id}
                   name={gamer.name}
                   background_image={gamer.background_image}
                   price={prices[index]}
-                  console={gamer.parent_platforms[getRandomPlataform()].platform.name}
+                  console={
+                    gamer.parent_platforms[getRandomPlatform()].platform.name
+                  }
                   format={getRandomFormat()}
                   conditions={getRandomCondition()}
+                  released={gamer.released}
+                  genres={gamer.genres}
+                  Rank={gamer.rating}
                 />
               ))
           ) : (
