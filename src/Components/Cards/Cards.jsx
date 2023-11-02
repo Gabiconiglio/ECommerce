@@ -1,7 +1,10 @@
-import Mafia2 from "../Imagines/Mafia2.jpg";
+import { React, useState } from "react";
+import Counter from "../Counter/Counter.jsx"
 import "../Cards/Cards.css";
 
 function Cards(props) {
+  
+
   return (
     <>
       <div
@@ -9,22 +12,36 @@ function Cards(props) {
         id="cardsPrincipal"
       >
         <figure>
-          <img src={Mafia2} alt="Shoes" />
+          <img src={props.background_image} alt="Shoes" id="imageCards"/>
         </figure>
         <div className="card-body">
           <h2 className="card-title">{props.name}</h2>
-          <div>
-            <p>Price: ${props.price}</p>
-          </div>
-          <div>
-            <div className="join">
-              <button className="btn btn-ghost btn-circle">«</button>
-              <button className="btn btn-ghost btn-circle pepe">2</button>
-              <button className="btn btn-ghost btn-circle">»</button>
+          <div className="textoCard">
+            <div>
+              <p>
+                {" "}
+                <strong>Console:</strong> {props.console}
+              </p>
+              <p>
+                <strong>Format:</strong> {props.format}
+              </p>
+            </div>
+            <div>
+              <p>
+                <strong>Conditions:</strong> {props.conditions}
+              </p>
+              <p>
+                <strong>Price:</strong> ${props.price}
+              </p>
             </div>
           </div>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+          <div className="card-actions justify-center">
+            <div>
+              <div className="join">
+                <Counter/>
+              </div>
+            </div>
+            <button className="btn btn-outline">Buy Now</button>
           </div>
         </div>
       </div>

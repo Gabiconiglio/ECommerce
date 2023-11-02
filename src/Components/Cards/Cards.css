@@ -9,7 +9,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-bottom: 2px solid black;
 }
-.pepe{
-  border: solid 1px black;
+
+.textoCard{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.textoCard p{
+  margin: 15px;
 }

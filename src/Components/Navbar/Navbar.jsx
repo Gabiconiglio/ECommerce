@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { React, useState } from "react";
 import { FiSun } from "react-icons/Fi";
 import { BiMoon } from "react-icons/Bi";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ function Navbar() {
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
-  
+
   return (
     <>
       <div
