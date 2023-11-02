@@ -26,8 +26,8 @@ function Rating({ Rank }) {
           type="radio"
           name="rating"
           className="mask mask-star-2"
-          style={{ backgroundColor: "gray" }}
-          key={i + Rank} // Asegúrate de que las claves sean únicas
+          id="blancas"
+          key={i + Rank} 
           disabled
         />
       );

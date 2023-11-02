@@ -10,7 +10,7 @@ function ModalDetail({
   genres,
   Platform,
   Rank,
-  customKey,
+  customKey
 }) {
   return (
     <dialog id="my_modal_2" className="modal">
@@ -20,9 +20,9 @@ function ModalDetail({
           {name}
         </h3>
         <div className="py-4" id="InfoDetail">
-          <p>
-            <strong>Id:</strong>
-            {customKey}
+        <p>
+            <strong>Id:</strong>{customKey}
+            
           </p>
           <p>
             <strong>Release Date:</strong>{" "}
