@@ -5,7 +5,7 @@ import ModalLogIn from "../ModalLogIn/ModalLogIn.jsx";
 import "../Login/Login.css";
 
 function Login() {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
 
   const toggleLogin = () => {
     if (!login) {

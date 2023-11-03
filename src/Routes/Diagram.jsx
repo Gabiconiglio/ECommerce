@@ -12,6 +12,7 @@ import Footer from "../Components/Footer/Footer.jsx";
 function Diagram() {
   return (
     <>
+    
       <BrowserRouter>
         <Navbar />
         <Routes>

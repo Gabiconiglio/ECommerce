@@ -43,13 +43,15 @@ function ModalDetail({
             <strong>Platform:</strong> {Platform}
           </p>
         </div>
+        <div className="join">
         <Rating Rank={Rank} />
         <div className="modal-action">
           <form method="dialog">
-            <button className="btn" onClick={closeModal}>
+            <button className="btn btn-outline" id="btnCloseModal"onClick={closeModal}>
               Close
             </button>
           </form>
+        </div>
         </div>
       </div>
     </dialog>

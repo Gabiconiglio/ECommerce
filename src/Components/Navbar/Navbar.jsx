@@ -1,27 +1,28 @@
-import { React, useState } from "react";
-import { FiSun } from "react-icons/Fi";
-import { BiMoon } from "react-icons/Bi";
+import React from "react"; // Importa React en lugar de { React }
+import { FiSun } from "react-icons/fi"; // Importa FiSun en lugar de { FiSun }
+import { BiMoon } from "react-icons/bi"; // Importa BiMoon en lugar de { BiMoon }
 import { Link } from "react-router-dom";
+import { useToggle } from "../Hook/ToggleContext";
 import Rayos from "../Imagines/Rayos.png";
 import Search from "../Search/Search";
 import Login from "../Login/Login";
 import "./Navbar.css";
 
 function Navbar() {
-  const [isChecked, setIsChecked] = useState(false);
+  const { isChecked, setIsChecked } = useToggle();
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
-  };
+  }
 
   return (
     <>
       <div
         className={`navbar bg-base-100 rounded-xl border p-2 ${
-          isChecked ? "border-warning" : "border-base-400"
+          isChecked ? "border-base-400" : "border-warning"
         }`}
         id="Navbar"
-        data-theme={isChecked ? "dark" : "light"}
+        data-theme={isChecked ? "light" : "dark"}
       >
         <div className="navbar-start">
           <div className="dropdown" id="drop">
@@ -78,7 +79,7 @@ function Navbar() {
           </Link>
         </div>
         <div className="navbar-end" id="ladoIzq">
-          {isChecked ? <BiMoon id="iconoToggle" /> : <FiSun id="iconoToggle" />}
+          {isChecked ? <FiSun id="iconoToggle" /> : <BiMoon id="iconoToggle"/>}
           <div>
             <input
               type="checkbox"
@@ -125,23 +126,23 @@ function Navbar() {
                 </div>
               </div>
             </div>
-            <button class="btn btn-ghost btn-circle">
-              <div class="indicator">
+            <button className="btn btn-ghost btn-circle">
+              <div className="indicator">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
+                  className="h-5 w-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
                   />
                 </svg>
-                <span class="badge badge-xs badge-primary indicator-item"></span>
+                <span className="badge badge-xs badge-primary indicator-item"></span>
               </div>
             </button>
           </div>
@@ -153,3 +154,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
