@@ -1,6 +1,6 @@
-import React from "react"; // Importa React en lugar de { React }
-import { FiSun } from "react-icons/fi"; // Importa FiSun en lugar de { FiSun }
-import { BiMoon } from "react-icons/bi"; // Importa BiMoon en lugar de { BiMoon }
+import React from "react"; 
+import { FiSun } from "react-icons/fi"; 
+import { BiMoon } from "react-icons/bi"; 
 import { Link } from "react-router-dom";
 import { useToggle } from "../Hook/ToggleContext";
 import Rayos from "../Imagines/Rayos.png";
@@ -49,17 +49,17 @@ function Navbar() {
             >
               <Link to={"/"}>
                 <li>
-                  <a>Homepage</a>
+                  <p>Homepage</p>
                 </li>
               </Link>
               <Link to={"/Productos"}>
                 <li>
-                  <a>Productos</a>
+                  <p>Productos</p>
                 </li>
               </Link>
               <Link to={"/About"}>
                 <li>
-                  <a>About</a>
+                  <p>About</p>
                 </li>
               </Link>
             </ul>
@@ -67,7 +67,7 @@ function Navbar() {
         </div>
         <div className="navbar-center" id="logo">
           <Link to={"/"}>
-            <a
+            <div
               className={`btn btn-ghost normal-case text-xl ${
                 isChecked ? "dark" : "light"
               }`}
@@ -75,7 +75,7 @@ function Navbar() {
             >
               <img src={Rayos} alt="Pelispedia" id="icono" />
               OlympusGG
-            </a>
+            </div>
           </Link>
         </div>
         <div className="navbar-end" id="ladoIzq">
