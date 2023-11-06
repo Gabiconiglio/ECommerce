@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Loading from "../Components/Loading/Loading.jsx"
 import Hero from "../Components/Hero/Hero.jsx";
 import VideoJuegos from "../Components/Imagines/Videojuegos.jpg";
 import Consolas from "../Components/Imagines/Consolas.jpg";
@@ -8,26 +8,26 @@ import "../Screens/Css/Products.css";
 
 function Products() {
   const DesVideo =
-    "Tenemos el mayor stock de videojuegos del mercado y para todas las consolas.";
+    "We have the largest stock of video games on the market and for all consoles.";
   const DesConsola =
-    "Vendemos consolas nuevas o de segunda mano en excelentes condiciones";
+    "We sell new or used consoles in excellent condition. They are also received in the form of payment";
   const DesAccesorios =
-    "Buscas un mando nuevo, Amiibos o accesorios para tu consola, este es tu lugar";
+    "Are you looking for a new controller, Amiibos or accessories for your console, this is your place";
   const DesServicio =
-    "En nuestro local tenemos servicio técnico especializado para cuidar de tu consola";
+    "At our location we have specialized technical service to take care of your console";
 
   const products = [
     {
       id: 1,
-      name: "VideoJuegos",
+      name: "VideoGames",
       image: VideoJuegos,
-      descriptions: DesServicio,
+      descriptions: DesVideo,
       butInfo: "Get Games",
       category: "Games",
     },
     {
       id: 2,
-      name: "Consolas",
+      name: "Consoles",
       image: Consolas,
       descriptions: DesConsola,
       butInfo: "Get Consoles",
@@ -35,7 +35,7 @@ function Products() {
     },
     {
       id: 3,
-      name: "Accesorios",
+      name: "Accessories",
       image: Accesorios,
       descriptions: DesAccesorios,
       butInfo: "Get accessories",
@@ -43,7 +43,7 @@ function Products() {
     },
     {
       id: 4,
-      name: "Servicio Técnico",
+      name: "Tech-Service",
       image: Servicio,
       descriptions: DesServicio,
       butInfo: "Get technical service",
@@ -53,7 +53,7 @@ function Products() {
 
   return (
     <>
-      <h1 id="tituloProductos">Productos</h1>
+      <h1 id="tituloProductos">Products</h1>
       <div className="join" id="heros">
         {products.length > 0 ? (
           products
@@ -69,9 +69,7 @@ function Products() {
               />
             ))
         ) : (
-          <>
-            <p>Aca va el loading</p>
-          </>
+         <Loading/>
         )}
       </div>
     </>

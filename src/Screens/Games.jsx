@@ -1,12 +1,17 @@
 import { React, useState, useEffect } from "react";
 import { Url_Games, api_key } from "../Components/Links/Link.jsx";
+import { useFetch } from "../Components/Hook/useEffect.js";
+import Loading from "../Components/Loading/Loading.jsx"
 import Cards from "../Components/Cards/Cards.jsx";
 import Drawer from "../Components/Drawer/Drawer.jsx";
 import "../Screens/Css/Games.css";
 
 function Games() {
-  const [videoGames, setVideoGames] = useState([]);
+  
+  const url=Url_Games + api_key
   const [prices, setPrices] = useState([]);
+  const [data] = useFetch(url);
+
 
   const handleRandomPrices = () => {
     const min = 2000;
@@ -31,16 +36,7 @@ function Games() {
     const randomIndex = Math.floor(Math.random() * Format.length);
     return Format[randomIndex];
   };
-
-  useEffect(() => {
-    fetch(Url_Games + api_key)
-      .then((res) => res.json())
-      .then((data) => {
-        setVideoGames(data.results);
-        const randomPrices = data.results.map(() => handleRandomPrices());
-        setPrices(randomPrices);
-      });
-  }, []);
+  
 
   return (
     <div className="flex">
@@ -48,10 +44,10 @@ function Games() {
         <Drawer />
       </div>
       <div className="w-3/4 p-4 ">
-        <h1 id="tituloGames">Games</h1>
+        <h3 id="tituloGames">Games</h3>
         <div className="flex flex-wrap justify-start" id="CardProducto">
-          {videoGames.length > 0 ? (
-            videoGames
+          {data.length > 0 ? (
+            data
               .slice(0, 20)
               .map((gamer, index) => (
                 <Cards
@@ -71,12 +67,7 @@ function Games() {
                 />
               ))
           ) : (
-            <>
-              <span className="loading loading-dots loading-xs"></span>
-              <span className="loading loading-dots loading-sm"></span>
-              <span className="loading loading-dots loading-md"></span>
-              <span className="loading loading-dots loading-lg"></span>
-            </>
+          <Loading/>
           )}
         </div>
       </div>

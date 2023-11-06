@@ -1,7 +1,7 @@
 import React from "react";
 import "../Rating/Rating.css";
 
-function Rating({ Rank }) {
+function Rating({ Rank}) {
   const maxRating = 5;
   const rating = parseInt(Rank);
   const renderStars = () => {

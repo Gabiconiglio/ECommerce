@@ -14,3 +14,10 @@
 #btnCloseModal{
     margin-left: 200px;
 }
+
+.text-dark {
+    color: #fff;
+  }
+  .text-light {
+    color: #000;
+  }

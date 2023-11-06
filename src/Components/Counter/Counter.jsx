@@ -1,24 +1,16 @@
-import { React, useState } from "react";
+import { React} from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import {useCounter} from "../Hook/useCounter.js"
 function Counter() {
-  const [units, setUnits] = useState(0);
 
-  const handleAddUnit = () => {
-    setUnits(units + 1);
-  };
-
-  const handleSubtractUnit = () => {
-    if (units > 0) {
-      setUnits(units - 1);
-    }
-  };
+  const [counter,handleAddUnit,handleSubtractUnit]=useCounter(0)
 
   return (
     <>
       <button className="btn btn-ghost btn-circle" onClick={handleSubtractUnit}>
         <AiOutlineMinus />
       </button>
-      <button className="btn btn-ghost btn-circle">{units}</button>
+      <button className="btn btn-ghost btn-circle">{counter}</button>
       <button className="btn btn-ghost btn-circle" onClick={handleAddUnit}>
         <AiOutlinePlus />
       </button>

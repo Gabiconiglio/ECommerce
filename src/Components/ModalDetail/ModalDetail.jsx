@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useToggle } from "../Hook/ToggleContext";
 import Rating from "../Rating/Rating.jsx";
 import "../ModalDetail/ModalDetail.css";
 
@@ -10,19 +11,27 @@ function ModalDetail({
   genres,
   Platform,
   Rank,
-  customKey
+  customKey,
 }) {
+  const { isChecked } = useToggle();
+
+  const textClass = isChecked ? "text-light" : "text-dark";
+
   return (
-    <dialog id="my_modal_2" className="modal">
+    <dialog
+      id="my_modal_2"
+      className="modal"
+      data-theme={isChecked ? "light" : "dark"}
+    >
       <div className="modal-box">
         <img src={image} alt="Games" id="" />
-        <h3 className="font-bold text-lg" id="textModalDetail">
+        <h3 className={`font-bold text-lg ${textClass}`} id="textModalDetail">
           {name}
         </h3>
-        <div className="py-4" id="InfoDetail">
-        <p>
-            <strong>Id:</strong>{customKey}
-            
+        <div className={`py-4 ${textClass}`} id="InfoDetail">
+          <p>
+            <strong>Id:</strong>
+            {customKey}
           </p>
           <p>
             <strong>Release Date:</strong>{" "}
@@ -44,14 +53,18 @@ function ModalDetail({
           </p>
         </div>
         <div className="join">
-        <Rating Rank={Rank} />
-        <div className="modal-action">
-          <form method="dialog">
-            <button className="btn btn-outline" id="btnCloseModal"onClick={closeModal}>
-              Close
-            </button>
-          </form>
-        </div>
+          <Rating Rank={Rank} />
+          <div className="modal-action">
+            <form method="dialog">
+              <button
+                className="btn btn-outline"
+                id="btnCloseModal"
+                onClick={closeModal}
+              >
+                Close
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </dialog>

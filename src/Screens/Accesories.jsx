@@ -3,7 +3,7 @@ import "../Screens/Css/Accessories.css"
 function Accessories() {
   return (
     <div>
-      <h1 id="tituloAccesories">accessories</h1>
+      <h1 id="titleAccesories">Accessories</h1>
     </div>
   );
 }

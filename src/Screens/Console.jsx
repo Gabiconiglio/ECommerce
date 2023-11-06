@@ -3,7 +3,7 @@ import "../Screens/Css/Console.css";
 function Console() {
   return (
     <div>
-      <h1 id="tituloConsole">Console</h1>
+      <h3 id="titleConsole">Console</h3>
     </div>
   );
 }

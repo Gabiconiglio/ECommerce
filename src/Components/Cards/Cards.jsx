@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { useToggle } from "../Hook/ToggleContext";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import Counter from "../Counter/Counter.jsx";
 import ModalDetail from "../ModalDetail/ModalDetail.jsx";
@@ -6,6 +7,7 @@ import "../Cards/Cards.css";
 
 function Cards(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isChecked } = useToggle();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -17,8 +19,11 @@ function Cards(props) {
   return (
     <>
       <div
-        className="card card-compact w-105 h-105 bg-base-100 shadow-xl"
+        className={`card card-compact w-105 h-105 bg-base-100 shadow-xl ${
+          isChecked ? "border-base-400" : "border-warning"
+        }`}
         id="cardsPrincipal"
+        data-theme={isChecked ? "light" : "dark"}
       >
         <figure>
           <img src={props.background_image} alt="Shoes" id="imageCards" />
