@@ -14,7 +14,7 @@ function Checkbox(props) {
 
   return (
     <>
-      <h3 className="titleConditionsDrawer">{props.title}</h3>
+      <h3 className="titleConditionsDrawer"><strong>{props.title}</strong></h3>
       <div>
         <input
           type="checkbox"
@@ -23,7 +23,7 @@ function Checkbox(props) {
           onChange={handleCheckboxChange1} 
           id="check"
         />
-        <a>{props.condition1}</a>
+        <p>{props.condition1}</p>
       </div>
       <div>
         <input
@@ -33,7 +33,7 @@ function Checkbox(props) {
           onChange={handleCheckboxChange2}
           id="check"
         />
-        <a>{props.condition2}</a>
+        <p>{props.condition2}</p>
       </div>
     </>
   );

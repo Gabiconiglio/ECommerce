@@ -1,8 +1,16 @@
+import React, { useState } from "react";
 import { useToggle } from "../Hook/ToggleContext";
-import Checkbox from "../CheckBox/CheckBox.jsx"
+import Checkbox from "../CheckBox/CheckBox.jsx";
+import RangeDrawer from "../Range/Range.jsx"
+import RadioButton from "../RadioButton/RadioButton.jsx";
 import "../Drawer/Drawer.css";
 
 function Drawer() {
+  const [selectedPlatform, setSelectedPlatform] = useState("");
+
+  const handlePlatformChange = (platform) => {
+    setSelectedPlatform(platform);
+  };
   const { isChecked } = useToggle();
 
   return (
@@ -16,11 +24,72 @@ function Drawer() {
       >
         <h3 className="titleDrawer">Search Filters</h3>
         <ul>
-          <li className="filtersConditions">
-            <Checkbox title={"Conditions"} condition1={"New"} condition2={"Used"}/>
+          <li>
+            <Checkbox
+              title={"Conditions"}
+              condition1={"New"}
+              condition2={"Used"}
+            />
           </li>
           <li>
-            <a>Sidebar Item 2</a>
+            <Checkbox
+              title={"Format"}
+              condition1={"Physical"}
+              condition2={"Digital"}
+            />
+          </li>
+          <div>
+            <li>
+              <h3 className="titlePlataform">
+                <strong>Platform</strong>
+              </h3>
+              <RadioButton
+                name="PC"
+                checked={selectedPlatform === "PC"}
+                onChange={() => handlePlatformChange("PC")}
+              />
+              <RadioButton
+                name="Ps5"
+                checked={selectedPlatform === "Ps5"}
+                onChange={() => handlePlatformChange("Ps5")}
+              />
+              <RadioButton
+                name="Ps4"
+                checked={selectedPlatform === "Ps4"}
+                onChange={() => handlePlatformChange("Ps4")}
+              />
+              <RadioButton
+                name="Switch"
+                checked={selectedPlatform === "Switch"}
+                onChange={() => handlePlatformChange("Switch")}
+              />
+              <RadioButton
+                name="Xbox"
+                checked={selectedPlatform === "Xbox"}
+                onChange={() => handlePlatformChange("Xbox")}
+              />
+            </li>
+          </div>
+          <li>
+            <h3 className="titlePrice">
+              <strong>Price</strong>
+            </h3>
+            <div className="input-container" id="imputPrice">
+              <input
+                type="text"
+                placeholder="Min Price"
+                className="input input-bordered w-full max-w-xs"
+              />
+              <input
+                type="text"
+                placeholder="Max Price"
+                className="input input-bordered w-full max-w-xs"
+              />
+            </div>
+          </li>
+          <li>
+            <h3 className="titleRanking"><strong>Ranking</strong></h3>
+            <RangeDrawer/>
           </li>
         </ul>
       </div>
