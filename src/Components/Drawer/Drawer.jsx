@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useToggle } from "../Hook/ToggleContext";
 import Checkbox from "../CheckBox/CheckBox.jsx";
-import RangeDrawer from "../Range/Range.jsx"
+import RangeDrawer from "../Range/Range.jsx";
 import RadioButton from "../RadioButton/RadioButton.jsx";
 import "../Drawer/Drawer.css";
 
-function Drawer() {
+function Drawer(props) {
   const [selectedPlatform, setSelectedPlatform] = useState("");
+  const plataform = props.plat;
+  const ranking = props.ranking;
 
   const handlePlatformChange = (platform) => {
     setSelectedPlatform(platform);
@@ -31,13 +33,15 @@ function Drawer() {
               condition2={"Used"}
             />
           </li>
-          <li>
-            <Checkbox
-              title={"Format"}
-              condition1={"Physical"}
-              condition2={"Digital"}
-            />
-          </li>
+          {plataform ? (
+            <li>
+              <Checkbox
+                title={"Format"}
+                condition1={"Physical"}
+                condition2={"Digital"}
+              />
+            </li>
+          ) : null}
           <div>
             <li>
               <h3 className="titlePlataform">
@@ -87,10 +91,14 @@ function Drawer() {
               />
             </div>
           </li>
+          {ranking?
           <li>
-            <h3 className="titleRanking"><strong>Ranking</strong></h3>
-            <RangeDrawer/>
+            <h3 className="titleRanking">
+              <strong>Ranking</strong>
+            </h3>
+            <RangeDrawer />
           </li>
+          :null}
         </ul>
       </div>
     </>

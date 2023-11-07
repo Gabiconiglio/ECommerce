@@ -41,7 +41,7 @@ function Games() {
   return (
     <div className="flex">
       <div className="" id="drawerGames">
-        <Drawer />
+        <Drawer plat={true} ranking={true} />
       </div>
       <div className="w-3/4 p-4 ">
         <h3 id="tituloGames">Games</h3>
@@ -55,7 +55,7 @@ function Games() {
                   customKey={gamer.id}
                   name={gamer.name}
                   background_image={gamer.background_image}
-                  price={prices[index]}
+                  price={handleRandomPrices()}
                   console={
                     gamer.parent_platforms[getRandomPlatform()].platform.name
                   }

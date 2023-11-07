@@ -13,7 +13,7 @@ function Search() {
         <div className={`input-wrapper ${inputVisible ? "input-visible" : ""}`}>
           <input
             type="text"
-            placeholder="Buscar"
+            placeholder="Search"
             className="input input-bordered input-sm w-full max-w-xs"
             id="textoBuscador"
           />

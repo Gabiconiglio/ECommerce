@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import Carousel from "../Components/Carousel/Carousel";
 import "../Screens/Css/Home.css"
 
 function Home() {
   return (
     <>
-      <h1 id="tituloHome">Home</h1>
+      <Carousel/>
     </>
   );
 }

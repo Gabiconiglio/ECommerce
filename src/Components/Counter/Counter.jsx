@@ -1,9 +1,9 @@
 import { React} from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import {useCounter} from "../Hook/useCounter.js"
-function Counter() {
+function Counter(props) {
 
-  const [counter,handleAddUnit,handleSubtractUnit]=useCounter(0)
+  const [counter,handleAddUnit,handleSubtractUnit]=useCounter(props.count)
 
   return (
     <>

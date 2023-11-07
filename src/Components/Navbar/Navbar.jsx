@@ -45,21 +45,21 @@ function Navbar() {
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-              id="textoDropHome"
+              
             >
               <Link to={"/"}>
                 <li>
-                  <p>Homepage</p>
+                  <p id="textoDropHome">Homepage</p>
                 </li>
               </Link>
               <Link to={"/Productos"}>
                 <li>
-                  <p>Products</p>
+                  <p id="textoDropHome">Products</p>
                 </li>
               </Link>
               <Link to={"/About"}>
                 <li>
-                  <p>About</p>
+                  <p id="textoDropHome">About</p>
                 </li>
               </Link>
             </ul>
@@ -119,7 +119,7 @@ function Navbar() {
                   <span className="font-bold text-lg">8 Items</span>
                   <span className="text-info">Subtotal: $999</span>
                   <div className="card-actions">
-                    <button className="btn btn-primary btn-block">
+                    <button className="btn btn-outline">
                       View cart
                     </button>
                   </div>

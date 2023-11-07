@@ -1,12 +1,16 @@
 import { React, useState } from "react";
 import { useToggle } from "../Hook/ToggleContext";
 import { AiOutlineInfoCircle } from "react-icons/ai";
+// import { useLocalStorage } from "../Hook/LocalStorage";
 import Counter from "../Counter/Counter.jsx";
 import ModalDetail from "../ModalDetail/ModalDetail.jsx";
 import "../Cards/Cards.css";
 
 function Cards(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [count, setCount] = useState(0); 
+  // const [savedCount, setSavedCount] = useLocalStorage(`count-${props.customKey}`, 1); // Utiliza useLocalStorage para guardar/recuperar la cantidad
+  // const [savedPrice, setSavedPrice] = useLocalStorage(`price-${props.customKey}`, props.price); // Utiliza useLocalStorage para guardar/recuperar el precio
   const { isChecked } = useToggle();
 
   const openModal = () => {
@@ -15,6 +19,8 @@ function Cards(props) {
       document.getElementById("my_modal_2").showModal();
     }, 0);
   };
+
+  
 
   return (
     <>
@@ -63,7 +69,7 @@ function Cards(props) {
           <div className="card-actions justify-center">
             <div>
               <div className="join">
-                <Counter />
+                <Counter count={count} />
               </div>
             </div>
             <button className="btn btn-outline">Buy Now</button>
