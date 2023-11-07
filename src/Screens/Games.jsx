@@ -36,7 +36,6 @@ function Games() {
     const randomIndex = Math.floor(Math.random() * Format.length);
     return Format[randomIndex];
   };
-  
 
   return (
     <div className="flex">

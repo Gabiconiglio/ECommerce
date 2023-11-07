@@ -1,16 +1,16 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { useToggle } from "../Hook/ToggleContext";
 import { AiOutlineInfoCircle } from "react-icons/ai";
-// import { useLocalStorage } from "../Hook/LocalStorage";
+import { useLocalStorage } from "../Hook/useLocalstorage.js";
 import Counter from "../Counter/Counter.jsx";
 import ModalDetail from "../ModalDetail/ModalDetail.jsx";
 import "../Cards/Cards.css";
 
 function Cards(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [count, setCount] = useState(0); 
-  // const [savedCount, setSavedCount] = useLocalStorage(`count-${props.customKey}`, 1); // Utiliza useLocalStorage para guardar/recuperar la cantidad
-  // const [savedPrice, setSavedPrice] = useLocalStorage(`price-${props.customKey}`, props.price); // Utiliza useLocalStorage para guardar/recuperar el precio
+  const [count, setCount] = useState(0);
+  const [savedCount, setSavedCount] = useLocalStorage(`count-${props.customKey}`,0); 
+  const [savedPrice, setSavedPrice] = useLocalStorage(`price-${props.customKey}`,props.price); 
   const { isChecked } = useToggle();
 
   const openModal = () => {
@@ -20,7 +20,12 @@ function Cards(props) {
     }, 0);
   };
 
-  
+
+  const handleBuyNow = () => {
+    setSavedPrice(props.price);
+    setSavedCount(count);
+    console.log(count)
+  };
 
   return (
     <>
@@ -69,10 +74,12 @@ function Cards(props) {
           <div className="card-actions justify-center">
             <div>
               <div className="join">
-                <Counter count={count} />
+                <Counter count={count} onCountUpdate={setCount} />
               </div>
             </div>
-            <button className="btn btn-outline">Buy Now</button>
+            <button className="btn btn-outline" onClick={handleBuyNow}>
+              Buy Now
+            </button>
           </div>
         </div>
       </div>
