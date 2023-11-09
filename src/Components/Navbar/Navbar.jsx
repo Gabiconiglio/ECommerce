@@ -45,7 +45,7 @@ function Navbar() {
               </svg>
             </label>
             <ul
-              tabIndex={0}
+              tabIndex={30}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               
             >
@@ -94,7 +94,7 @@ function Navbar() {
           <Search />
           <div className="flex-none" id="carrito">
             <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="btn btn-ghost btn-circle">
+              <label tabIndex={1} className="btn btn-ghost btn-circle">
                 <div className="indicator">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +115,7 @@ function Navbar() {
               </label>
               <Cart/>
             </div>
-            <button className="btn btn-ghost btn-circle">
+            <button tabIndex={3} className="btn btn-ghost btn-circle">
               <div className="indicator">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

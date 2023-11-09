@@ -1,9 +1,10 @@
-import { React, useState, useEffect } from "react";
+import { React, useState} from "react";
 import { Url_Games, api_key } from "../Components/Links/Link.jsx";
-import { useFetch } from "../Components/Hook/useEffect.js";
+import { useFetch } from "../Components/Hook/useFetch.js";
 import Loading from "../Components/Loading/Loading.jsx"
 import Cards from "../Components/Cards/Cards.jsx";
 import Drawer from "../Components/Drawer/Drawer.jsx";
+import TxtGames from "../Components/Imagines/TxtGames.png"
 import "../Screens/Css/Games.css";
 
 function Games() {
@@ -43,12 +44,12 @@ function Games() {
         <Drawer plat={true} ranking={true} />
       </div>
       <div className="w-3/4 p-4 ">
-        <h3 id="tituloGames">Games</h3>
+        <img src={TxtGames} alt="TxtGames" className="photoGames" />
         <div className="flex flex-wrap justify-start" id="CardProducto">
           {data.length > 0 ? (
             data
               .slice(0, 20)
-              .map((gamer, index) => (
+              .map((gamer) => (
                 <Cards
                   key={gamer.id}
                   customKey={gamer.id}
@@ -60,9 +61,6 @@ function Games() {
                   }
                   format={getRandomFormat()}
                   conditions={getRandomCondition()}
-                  released={gamer.released}
-                  genres={gamer.genres}
-                  Rank={gamer.rating}
                 />
               ))
           ) : (

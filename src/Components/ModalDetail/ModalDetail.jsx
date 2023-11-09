@@ -1,62 +1,101 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useFetchDep } from "../Hook/useFetchDep.js";
+import { Url_Games, api_key } from "../Links/Link.jsx";
 import { useToggle } from "../Hook/ToggleContext";
+import { useLocalStorage } from "../Hook/useLocalstorage.js";
+import Counter from "../Counter/Counter.jsx";
 import Rating from "../Rating/Rating.jsx";
+import Loading from "../Loading/Loading.jsx";
 import "../ModalDetail/ModalDetail.css";
 
-function ModalDetail({
-  closeModal,
-  name,
-  released,
-  image,
-  genres,
-  Platform,
-  Rank,
-  customKey,
-}) {
+function ModalDetail({ closeModal, Platform, customKey, price }) {
+  const url = Url_Games + `/${customKey}` + api_key;
   const { isChecked } = useToggle();
-
+  const [isLoading, setIsLoading] = useState(true);
+  const [count, setCount] = useState(0);
+  const [savedCount, setSavedCount] = useLocalStorage(`count-${customKey}`, 0);
+  const [savedPrice, setSavedPrice] = useLocalStorage(`price-${customKey}`, price);
+  
   const textClass = isChecked ? "text-light" : "text-dark";
 
+  const handleBuyNow = () => {
+    setSavedPrice(price);
+    setSavedCount(count);
+  };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  const [data] = useFetchDep(url, customKey);
   return (
     <dialog
       id="my_modal_2"
       className="modal"
       data-theme={isChecked ? "light" : "dark"}
     >
-      <div className="modal-box">
-        <img src={image} alt="Games" id="" />
-        <h3 className={`font-bold text-lg ${textClass}`} id="textModalDetail">
-          {name}
-        </h3>
-        <div className={`py-4 ${textClass}`} id="InfoDetail">
-          <p>
-            <strong>Id:</strong>
-            {customKey}
-          </p>
-          <p>
-            <strong>Release Date:</strong>{" "}
-            {new Date(released).toLocaleDateString("es-ES")}
-          </p>
-          <p>
-            <strong>Genres:</strong>{" "}
-            {genres && genres.length > 0 ? (
-              <>
-                {genres[0].name}
-                {genres.length > 1 && ` / ${genres[1].name}`}
-              </>
-            ) : (
-              "No genres available"
-            )}
-          </p>
-          <p>
-            <strong>Platform:</strong> {Platform}
-          </p>
-        </div>
-        <div className="join">
-          <Rating Rank={Rank} />
+      <div className="modal-box" id="modalBox">
+        <>
+          {isLoading ? <Loading /> : null}
+          <img src={data.background_image} alt="Games" id="" />
+          <h3 className={`font-bold text-lg ${textClass}`} id="textModalDetail">
+            {data.name}
+          </h3>
+          <div className={`py-4 ${textClass}`} id="InfoDetail">
+            <p>
+              <strong>Id:</strong>
+              {data.id}
+            </p>
+            <p>
+              <strong>Description:</strong>{" "}
+              {data.description_raw
+                ? data.description_raw.split(".")[1] + "."
+                : "No description available"}
+            </p>
+            <p>
+              <strong>Release Date:</strong>{" "}
+              {new Date(data.released).toLocaleDateString("es-ES")}
+            </p>
+            <p>
+              <strong>Genres:</strong>{" "}
+              {data.genres && data.genres.length > 0 ? (
+                <>
+                  {data.genres[0].name}
+                  {data.genres.length > 1 && ` / ${data.genres[1].name}`}
+                </>
+              ) : (
+                "No genres available"
+              )}
+            </p>
+            <p>
+              <strong>Platform:</strong> {Platform}
+            </p>
+            <p>
+              <strong>Price: $</strong>
+              {price}
+            </p>
+          </div>
+          <Rating Rank={data.rating} color={`${textClass}`} />
+          <div className="counteBuy">
+            <div className="card-actions justify-center">
+              <div>
+                <div className="join">
+                  <Counter color={`${textClass}`} count={count} onCountUpdate={setCount} />
+                </div>
+              </div>
+              <button className="btn btn-outline" onClick={handleBuyNow}>
+                Buy Now
+              </button>
+            </div>
+          </div>
           <div className="modal-action">
             <form method="dialog">
               <button
+                tabIndex={6}
                 className="btn btn-outline"
                 id="btnCloseModal"
                 onClick={closeModal}
@@ -65,7 +104,7 @@ function ModalDetail({
               </button>
             </form>
           </div>
-        </div>
+        </>
       </div>
     </dialog>
   );

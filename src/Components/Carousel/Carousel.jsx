@@ -22,6 +22,7 @@ function Carousel() {
           </Link>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a
+              tabIndex={18}
               href="#slide4"
               className={`btn btn-circle ${
                 isChecked ? "border-base-400" : "border-warning"
@@ -32,6 +33,7 @@ function Carousel() {
               <GrFormPreviousLink id="prevCar" />
             </a>
             <a
+              tabIndex={19}
               href="#slide2"
               className={`btn btn-circle ${
                 isChecked ? "border-base-400" : "border-warning"
@@ -52,6 +54,7 @@ function Carousel() {
           </Link>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a
+              tabIndex={21}
               href="#slide1"
               className={`btn btn-circle ${
                 isChecked ? "border-base-400" : "border-warning"
@@ -62,6 +65,7 @@ function Carousel() {
               <GrFormPreviousLink id="prevCar" />
             </a>
             <a
+              tabIndex={22}
               href="#slide3"
               className={`btn btn-circle ${
                 isChecked ? "border-base-400" : "border-warning"
@@ -82,6 +86,7 @@ function Carousel() {
           </Link>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a
+              tabIndex={23}
               href="#slide2"
               className={`btn btn-circle ${
                 isChecked ? "border-base-400" : "border-warning"
@@ -92,6 +97,7 @@ function Carousel() {
               <GrFormPreviousLink id="prevCar" />
             </a>
             <a
+              tabIndex={24}
               href="#slide4"
               className={`btn btn-circle ${
                 isChecked ? "border-base-400" : "border-warning"
@@ -112,6 +118,7 @@ function Carousel() {
           </Link>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a
+              tabIndex={25}
               href="#slide3"
               className={`btn btn-circle ${
                 isChecked ? "border-base-400" : "border-warning"
@@ -122,6 +129,7 @@ function Carousel() {
               <GrFormPreviousLink id="prevCar" />
             </a>
             <a
+              tabIndex={26}
               href="#slide1"
               className={`btn btn-circle ${
                 isChecked ? "border-base-400" : "border-warning"

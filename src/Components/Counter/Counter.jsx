@@ -1,17 +1,30 @@
-import { React} from "react";
+import { React } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
-// import {useCounter} from "../Hook/useCounter.js"
-function Counter(props) {
+import "../Counter/Counter.css"
 
-  // const [counter,handleAddUnit,handleSubtractUnit]=useCounter(props.count)
+function Counter(props) {
 
   return (
     <>
-      <button className="btn btn-ghost btn-circle" onClick={()=>props.onCountUpdate(props.count-1)}>
+      <button
+        tabIndex={11}
+        className="btn btn-ghost btn-circle" id={props.color}
+        onClick={() => {
+          props.count > 0 ? props.onCountUpdate(props.count - 1) : null;
+        }}
+      >
         <AiOutlineMinus />
       </button>
-      <button className="btn btn-ghost btn-circle">{props.count}</button>
-      <button className="btn btn-ghost btn-circle" onClick={()=>props.onCountUpdate(props.count+1)}>
+
+      <button tabIndex={12} className="btn btn-ghost btn-circle" id={props.color}>
+        {props.count}
+      </button>
+      <button
+        tabIndex={13}
+        className="btn btn-ghost btn-circle"
+        id={props.color}
+        onClick={() => props.onCountUpdate(props.count + 1) }
+      >
         <AiOutlinePlus />
       </button>
     </>

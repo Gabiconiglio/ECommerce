@@ -4,6 +4,7 @@ import VideoJuegos from "../Components/Imagines/Videojuegos.jpg";
 import Consolas from "../Components/Imagines/Consolas.jpg";
 import Accesorios from "../Components/Imagines/Mandos.jpg";
 import Servicio from "../Components/Imagines/ServicioTecnico.jpg";
+import TxtProducto from "../Components/Imagines/TxtProducto.png"
 import "../Screens/Css/Products.css";
 
 function Products() {
@@ -53,7 +54,7 @@ function Products() {
 
   return (
     <>
-      <h1 id="tituloProductos">Products</h1>
+      <img src={TxtProducto} alt="TxtProducto" className="photoProducts" />
       <div className="join" id="heros">
         {products.length > 0 ? (
           products

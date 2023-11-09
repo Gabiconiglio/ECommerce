@@ -19,6 +19,7 @@ function Search() {
           />
         </div>
         <button
+          tabIndex={4}
           className="btn btn-ghost btn-circle"
           onClick={toggleInput}
         >

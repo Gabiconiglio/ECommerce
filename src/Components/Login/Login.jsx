@@ -5,7 +5,7 @@ import ModalLogIn from "../ModalLogIn/ModalLogIn.jsx";
 import "../Login/Login.css";
 
 function Login() {
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
 
   const toggleLogin = () => {
     if (!login) {
@@ -45,7 +45,7 @@ function Login() {
           </>
         ) : (
           <>
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <label tabIndex={7} className="btn btn-ghost btn-circle avatar">
               <div className="w-8 rounded-full">
                 <IoIosLogIn id="iconoLogIn" />
               </div>

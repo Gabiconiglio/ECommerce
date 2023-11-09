@@ -17,7 +17,13 @@
 
 .text-dark {
     color: #fff;
-  }
-  .text-light {
+}
+.text-light {
     color: #000;
-  }
+}
+.counteBuy{
+    margin-top: 10px;
+}
+.count-dark{
+    background-color: white;
+}

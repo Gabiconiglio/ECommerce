@@ -18,7 +18,7 @@ function Home(props) {
               {props.descriptions}
             </p>
             <Link to={`/Productos/${props.category}`}>
-            <button className="btn btn-outline" id="botonHero">{props.butInfo}</button>
+            <button tabIndex={10} className="btn btn-outline" id="botonHero">{props.butInfo}</button>
             </Link>
           </div>
         </div>

@@ -1,0 +1,38 @@
+#txt1Notfound{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 15px;
+    font-size: 40px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;  
+}
+#txt2Notfound{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+    font-size: 40px;
+}
+#btnNot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.imageNotfound{
+    width: 600px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+.iconNot{
+    width: 40px;
+    height: 40px;
+}

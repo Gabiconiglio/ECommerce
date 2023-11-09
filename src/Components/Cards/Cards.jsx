@@ -1,30 +1,26 @@
-import { React, useState, useEffect } from "react";
+import { useState } from "react";
 import { useToggle } from "../Hook/ToggleContext";
 import { AiOutlineInfoCircle } from "react-icons/ai";
-import { useLocalStorage } from "../Hook/useLocalstorage.js";
-import Counter from "../Counter/Counter.jsx";
+import { useNavigate } from "react-router-dom";
 import ModalDetail from "../ModalDetail/ModalDetail.jsx";
 import "../Cards/Cards.css";
 
 function Cards(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [count, setCount] = useState(0);
-  const [savedCount, setSavedCount] = useLocalStorage(`count-${props.customKey}`,0); 
-  const [savedPrice, setSavedPrice] = useLocalStorage(`price-${props.customKey}`,props.price); 
   const { isChecked } = useToggle();
+  const navigate = useNavigate();
 
   const openModal = () => {
     setIsModalOpen(true);
     setTimeout(() => {
       document.getElementById("my_modal_2").showModal();
     }, 0);
+    navigate(`/Productos/Games/${props.customKey}`);
   };
 
-
-  const handleBuyNow = () => {
-    setSavedPrice(props.price);
-    setSavedCount(count);
-    console.log(count)
+  const closeAndRestoreRoute = () => {
+    setIsModalOpen(false);
+    navigate("/Productos/Games");
   };
 
   return (
@@ -40,18 +36,7 @@ function Cards(props) {
           <img src={props.background_image} alt="Shoes" id="imageCards" />
         </figure>
         <div className="card-body">
-          <div className="join">
-            <h2 className="card-title">{props.name}</h2>
-            <form method="dialog">
-              <button
-                className="btn btn-ghost btn-circle"
-                id="circleInfo"
-                onClick={openModal}
-              >
-                <AiOutlineInfoCircle id="iconoModalInfo" />
-              </button>
-            </form>
-          </div>
+          <h2 className="card-title">{props.name}</h2>
           <div className="textoCard">
             <div>
               <p>
@@ -71,28 +56,24 @@ function Cards(props) {
               </p>
             </div>
           </div>
-          <div className="card-actions justify-center">
-            <div>
-              <div className="join">
-                <Counter count={count} onCountUpdate={setCount} />
-              </div>
-            </div>
-            <button className="btn btn-outline" onClick={handleBuyNow}>
-              Buy Now
+          <form method="dialog">
+            <button
+              tabIndex={28}
+              className="btn btn-ghost btn-circle"
+              id="circleInfo"
+              onClick={openModal}
+            >
+              <AiOutlineInfoCircle id="iconoModalInfo" />
             </button>
-          </div>
+          </form>
         </div>
       </div>
       {isModalOpen && (
         <ModalDetail
-          closeModal={() => setIsModalOpen(false)}
-          name={props.name}
-          released={props.released}
-          image={props.background_image}
-          genres={props.genres}
+          closeModal={closeAndRestoreRoute}
           Platform={props.console}
-          Rank={props.Rank}
           customKey={props.customKey}
+          price={props.price}
         />
       )}
     </>

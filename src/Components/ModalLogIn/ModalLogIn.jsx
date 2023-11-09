@@ -9,7 +9,7 @@ function ModalLogIn() {
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
           <form method="dialog">
-            <button className="btn btn-ghost btn-circle"  id="circleExit">
+            <button tabIndex={5} className="btn btn-ghost btn-circle"  id="circleExit">
             <AiOutlineClose  id="iconoModalClose" />
             </button>           
           </form>
@@ -28,7 +28,7 @@ function ModalLogIn() {
           <div className="flex items-center" id="modalUsuario">
             <RiLockPasswordLine id="iconoModalPassword" />
             <input
-              type="text"
+              type="password"
               placeholder="Contraseña"
               className="input input-bordered input-sm w-full max-w-xs"
               id="textoContraseña"
