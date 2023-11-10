@@ -1,6 +1,5 @@
 import { React, useState, useContext } from "react";
 import { CounterContext } from "../Context/CounterContext.jsx";
-import { useLocalStorageRead } from "../Hook/useLocalstorage.js";
 import { VscBellDot, VscBell } from "react-icons/vsc";
 import "../Bell/Bell.css";
 

@@ -1,11 +1,10 @@
-import {React,useEffect, useState,useContext } from "react";
-import { CounterContext } from "../Context/CounterContext.jsx"
+import { React, useEffect, useState, useContext } from "react";
+import { CounterContext } from "../Context/CounterContext.jsx";
 import { useFetchDep } from "../Hook/useFetchDep.js";
 import { Url_Games, api_key } from "../Links/Link.jsx";
 import { useToggle } from "../Context/ToggleContext.jsx";
-import { useLocalStorage } from "../Hook/useLocalstorage.js";
-import AlertConfirm from "../Alert/AlertConfirm.jsx"
-import Alert from "../Alert/Alert.jsx"
+import AlertConfirm from "../Alert/AlertConfirm.jsx";
+import Alert from "../Alert/Alert.jsx";
 import Counter from "../Counter/Counter.jsx";
 import Rating from "../Rating/Rating.jsx";
 import Loading from "../Loading/Loading.jsx";
@@ -14,27 +13,32 @@ import "../ModalDetail/ModalDetail.css";
 function ModalDetail({ closeModal, Platform, customKey, price }) {
   const url = Url_Games + `/${customKey}` + api_key;
   const { isChecked } = useToggle();
-  const {items, setItems} = useContext(CounterContext)
+  const { items, setItems } = useContext(CounterContext);
   const [isLoading, setIsLoading] = useState(true);
   const [showAlert, setShowAlert] = useState(false);
   const [showAlert2, setShowAlert2] = useState(false);
   const [count, setCount] = useState(0);
-  const [savedCount, setSavedCount] = useLocalStorage(`count-${customKey}`, 0);
-  const [savedPrice, setSavedPrice] = useLocalStorage(`price-${customKey}`, price);
-  
   const textClass = isChecked ? "text-light" : "text-dark";
+  const localStorageKey = `Item_${customKey}`;
 
   const handleBuyNow = () => {
-    if(count>0){
-    setSavedPrice(price);
-    setSavedCount(count);
-    setShowAlert(true);
-    setItems(prevItems => prevItems + count);
-  }
-  else
-  {
-    setShowAlert2(true);
-  }
+    if (count > 0) {
+      
+      setItems((prevItems) => prevItems + count);
+
+      const itemData = {
+        id: customKey,
+        price: price,
+        CantItem: count,
+      };
+      const itemDataJSON = JSON.stringify(itemData);
+
+      localStorage.setItem(localStorageKey, itemDataJSON);
+
+      setShowAlert(true);
+    } else {
+      setShowAlert2(true);
+    }
   };
 
   setTimeout(() => {
@@ -106,14 +110,26 @@ function ModalDetail({ closeModal, Platform, customKey, price }) {
             <div className="card-actions justify-center">
               <div>
                 <div className="join">
-                  <Counter color={`${textClass}`} count={count} onCountUpdate={setCount} />
+                  <Counter
+                    color={`${textClass}`}
+                    count={count}
+                    onCountUpdate={setCount}
+                  />
                 </div>
               </div>
               <button className="btn btn-outline" onClick={handleBuyNow}>
                 Buy Now
               </button>
-              {showAlert && <AlertConfirm text={`You bought ${count} products`} />}
-              {showAlert2 && <Alert text={"You can only buy if you add the quantity of the product"}/>}
+              {showAlert && (
+                <AlertConfirm text={`You bought ${count} products`} />
+              )}
+              {showAlert2 && (
+                <Alert
+                  text={
+                    "You can only buy if you add the quantity of the product"
+                  }
+                />
+              )}
             </div>
           </div>
           <div className="modal-action">

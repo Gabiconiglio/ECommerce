@@ -1,10 +1,10 @@
-import Loading from "../Components/Loading/Loading.jsx"
+import Loading from "../Components/Loading/Loading.jsx";
 import Hero from "../Components/Hero/Hero.jsx";
 import VideoJuegos from "../Components/Imagines/Videojuegos.jpg";
 import Consolas from "../Components/Imagines/Consolas.jpg";
 import Accesorios from "../Components/Imagines/Mandos.jpg";
 import Servicio from "../Components/Imagines/ServicioTecnico.jpg";
-import TxtProducto from "../Components/Imagines/TxtProducto.png"
+import TxtProducto from "../Components/Imagines/TxtProducto.png";
 import "../Screens/Css/Products.css";
 
 function Products() {
@@ -70,7 +70,7 @@ function Products() {
               />
             ))
         ) : (
-         <Loading/>
+          <Loading />
         )}
       </div>
     </>

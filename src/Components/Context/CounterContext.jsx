@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 
-//Creamos el contexto
+
 export const CounterContext = createContext();
 export function CounterProvider({ children }) {
    

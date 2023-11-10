@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { React } from "react";
 import { AiOutlineUser,AiOutlineClose } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import "../ModalLogIn/ModalLogIn.css";

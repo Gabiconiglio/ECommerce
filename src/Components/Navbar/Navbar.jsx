@@ -117,7 +117,7 @@ function Navbar() {
                   <span className="badge badge-sm indicator-item">{items}</span>
                 </div>
               </label>
-              <Cart/>
+              <Cart />
             </div>
             <Bell/>
           </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { React, useState } from "react";
 import { useToggle } from "../Context/ToggleContext.jsx";
 import Checkbox from "../CheckBox/CheckBox.jsx";
 import RangeDrawer from "../Range/Range.jsx";
