@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useToggle } from "../Hook/ToggleContext";
+import { useToggle } from "../Context/ToggleContext";
 import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
 import BanNav from "../Imagines/BanNav.jpg";
 import GamesCar from "../Imagines/GamesCar.jpg";

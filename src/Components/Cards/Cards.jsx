@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useToggle } from "../Hook/ToggleContext";
+import { useToggle } from "../Context/ToggleContext.jsx";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import ModalDetail from "../ModalDetail/ModalDetail.jsx";

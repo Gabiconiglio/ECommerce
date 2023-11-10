@@ -1,4 +1,4 @@
-import { useToggle } from "../Hook/ToggleContext";
+import { useToggle } from "../Context/ToggleContext";
 import { AiFillGithub,AiOutlineLinkedin } from "react-icons/ai";
 import Rayos from "../Imagines/Rayos.png";
 import "../Footer/Footer.css";

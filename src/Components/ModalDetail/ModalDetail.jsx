@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import {React,useEffect, useState,useContext } from "react";
+import { CounterContext } from "../Context/CounterContext.jsx"
 import { useFetchDep } from "../Hook/useFetchDep.js";
 import { Url_Games, api_key } from "../Links/Link.jsx";
-import { useToggle } from "../Hook/ToggleContext";
+import { useToggle } from "../Context/ToggleContext.jsx";
 import { useLocalStorage } from "../Hook/useLocalstorage.js";
 import AlertConfirm from "../Alert/AlertConfirm.jsx"
 import Alert from "../Alert/Alert.jsx"
@@ -13,6 +14,7 @@ import "../ModalDetail/ModalDetail.css";
 function ModalDetail({ closeModal, Platform, customKey, price }) {
   const url = Url_Games + `/${customKey}` + api_key;
   const { isChecked } = useToggle();
+  const {items, setItems} = useContext(CounterContext)
   const [isLoading, setIsLoading] = useState(true);
   const [showAlert, setShowAlert] = useState(false);
   const [showAlert2, setShowAlert2] = useState(false);
@@ -27,6 +29,7 @@ function ModalDetail({ closeModal, Platform, customKey, price }) {
     setSavedPrice(price);
     setSavedCount(count);
     setShowAlert(true);
+    setItems(prevItems => prevItems + count);
   }
   else
   {
