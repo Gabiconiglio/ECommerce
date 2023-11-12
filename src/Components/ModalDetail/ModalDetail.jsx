@@ -21,20 +21,36 @@ function ModalDetail({ closeModal, Platform, customKey, price }) {
   const textClass = isChecked ? "text-light" : "text-dark";
   const localStorageKey = `Item_${customKey}`;
 
+  useEffect(() => {
+    const existingItemDataJSON = localStorage.getItem(localStorageKey);
+    if (existingItemDataJSON !== null) {
+      const existingItemData = JSON.parse(existingItemDataJSON);
+      setCount(existingItemData.CantItem);
+    } else {
+      setCount(0);
+    }
+  }, [localStorageKey]);
+
   const handleBuyNow = () => {
     if (count > 0) {
-      
+      const existingItemNewDataJSON = localStorage.getItem(localStorageKey);
+
+      if (existingItemNewDataJSON) {
+        const existingItemNewDataInfo = JSON.parse(existingItemNewDataJSON);
+        existingItemNewDataInfo.CantItem = count;
+        localStorage.setItem(localStorageKey,JSON.stringify(existingItemNewDataInfo)
+        );
+      } else {
+        const itemData = {
+          id: customKey,
+          price: price,
+          CantItem: count,
+        };
+        const itemDataJSON = JSON.stringify(itemData);
+        localStorage.setItem(localStorageKey, itemDataJSON);
+      }
+
       setItems((prevItems) => prevItems + count);
-
-      const itemData = {
-        id: customKey,
-        price: price,
-        CantItem: count,
-      };
-      const itemDataJSON = JSON.stringify(itemData);
-
-      localStorage.setItem(localStorageKey, itemDataJSON);
-
       setShowAlert(true);
     } else {
       setShowAlert2(true);
