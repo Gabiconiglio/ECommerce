@@ -1,8 +1,9 @@
-import { React, useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { CounterContext } from "../Context/CounterContext.jsx";
 import { useFetchDep } from "../Hook/useFetchDep.js";
 import { Url_Games, api_key } from "../Links/Link.jsx";
 import { useToggle } from "../Context/ToggleContext.jsx";
+import { useProductContext } from "../Context/ProductContext.jsx";
 import AlertConfirm from "../Alert/AlertConfirm.jsx";
 import Alert from "../Alert/Alert.jsx";
 import Counter from "../Counter/Counter.jsx";
@@ -17,53 +18,54 @@ function ModalDetail({ closeModal, Platform, customKey, price }) {
   const [isLoading, setIsLoading] = useState(true);
   const [showAlert, setShowAlert] = useState(false);
   const [showAlert2, setShowAlert2] = useState(false);
-  const [count, setCount] = useState(0);
+  const { productStates, updateProductState } = useProductContext();
+  const count = productStates[customKey]?.count || 0;
+  const productPrice = productStates[customKey]?.price || 0;
   const textClass = isChecked ? "text-light" : "text-dark";
   const localStorageKey = `Item_${customKey}`;
 
-  useEffect(() => {
-    const existingItemDataJSON = localStorage.getItem(localStorageKey);
-    if (existingItemDataJSON !== null) {
-      const existingItemData = JSON.parse(existingItemDataJSON);
-      setCount(existingItemData.CantItem);
-    } else {
-      setCount(0);
-    }
-  }, [localStorageKey]);
-
   const handleBuyNow = () => {
     if (count > 0) {
-      const existingItemNewDataJSON = localStorage.getItem(localStorageKey);
-
-      if (existingItemNewDataJSON) {
-        const existingItemNewDataInfo = JSON.parse(existingItemNewDataJSON);
-        existingItemNewDataInfo.CantItem = count;
-        localStorage.setItem(localStorageKey,JSON.stringify(existingItemNewDataInfo)
-        );
-      } else {
-        const itemData = {
-          id: customKey,
-          price: price,
-          CantItem: count,
-        };
-        const itemDataJSON = JSON.stringify(itemData);
-        localStorage.setItem(localStorageKey, itemDataJSON);
-      }
-
+      updateProductState(customKey, count, price);
       setItems((prevItems) => prevItems + count);
       setShowAlert(true);
+     
+        const existingItemNewDataJSON = localStorage.getItem(localStorageKey);
+  
+        if (existingItemNewDataJSON) {
+          const existingItemNewDataInfo = JSON.parse(existingItemNewDataJSON);
+          existingItemNewDataInfo.CantItem = count;
+          localStorage.setItem(localStorageKey,JSON.stringify(existingItemNewDataInfo)
+          );
+        } else {
+          const itemData = {
+            id: customKey,
+            price: price,
+            CantItem: count,
+          };
+          const itemDataJSON = JSON.stringify(itemData);
+          localStorage.setItem(localStorageKey, itemDataJSON);
+        }
     } else {
       setShowAlert2(true);
     }
-  };
+  }
 
-  setTimeout(() => {
-    setShowAlert(false);
-  }, 4000);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowAlert(false);
+    }, 4000);
 
-  setTimeout(() => {
-    setShowAlert2(false);
-  }, 3000);
+    return () => clearTimeout(timeout);
+  }, [showAlert]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowAlert2(false);
+    }, 3000);
+
+    return () => clearTimeout(timeout);
+  }, [showAlert2]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -74,6 +76,7 @@ function ModalDetail({ closeModal, Platform, customKey, price }) {
   }, []);
 
   const [data] = useFetchDep(url, customKey);
+
   return (
     <dialog
       id="my_modal_2"
@@ -129,7 +132,7 @@ function ModalDetail({ closeModal, Platform, customKey, price }) {
                   <Counter
                     color={`${textClass}`}
                     count={count}
-                    onCountUpdate={setCount}
+                    onCountUpdate={(newCount) => updateProductState(customKey, newCount)}
                   />
                 </div>
               </div>
@@ -141,9 +144,7 @@ function ModalDetail({ closeModal, Platform, customKey, price }) {
               )}
               {showAlert2 && (
                 <Alert
-                  text={
-                    "You can only buy if you add the quantity of the product"
-                  }
+                  text="You can only buy if you add the quantity of the product"
                 />
               )}
             </div>

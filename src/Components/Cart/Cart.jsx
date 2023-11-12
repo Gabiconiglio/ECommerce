@@ -1,11 +1,30 @@
 import { React, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CounterContext } from "../Context/CounterContext.jsx";
-import { useLocalStorage } from "../Hook/useLocalstorage.js"; 
+import { useProductContext } from "../Context/ProductContext.jsx";
 import "../Cart/Cart.css";
 
 function Cart() {
   const { items } = useContext(CounterContext);
+  const { productStates } = useProductContext();
+
+  const calculateSubtotal = () => {
+    let subtotal = 0;
+
+    for (const customKey in productStates) {
+      const productData = productStates[customKey];
+      const productCount = productData.count;
+      const productPrice = productData.price;
+
+      if (productCount && productPrice) {
+        const productSubtotal = productCount * productPrice;
+        subtotal += productSubtotal;
+      }
+    }
+
+    return subtotal;
+  };
+
   return (
     <>
       <div
@@ -14,7 +33,7 @@ function Cart() {
       >
         <div className="card-body">
           <span className="font-bold text-lg">{items} Items</span>
-          <span className="text-info">Subtotal: $</span>
+          <span className="text-info">Subtotal: ${calculateSubtotal()}</span>
           <div className="card-actions">
             <Link to={"/CartDetail"}>
               <button tabIndex={15} className="btn btn-outline">
