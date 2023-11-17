@@ -1,5 +1,5 @@
-import { React, useState,useEffect } from "react";
-import { getFirestore, getDocs, collection,query,where} from 'firebase/firestore'
+import { React} from "react";
+import UseFirestoreData from "../Components/Hook/useFetchFire.js"
 import Loading from "../Components/Loading/Loading.jsx"
 import Cards from "../Components/Cards/Cards.jsx";
 import Drawer from "../Components/Drawer/Drawer.jsx";
@@ -7,25 +7,9 @@ import TxtGames from "../Components/Imagines/TxtGames.png"
 import "../Screens/Css/Games.css";
 
 function Games() {
-  const [items, setItems] = useState({})
 
-  useEffect(()=> {
-    const db = getFirestore()
+  const { ItemCard, loading } = UseFirestoreData('Games','category', 'Games');
 
-    const itemsRef = collection(db, 'Games')
-    const queryFilter = query(itemsRef, where('category', '==', 'Games'));
-
-    getDocs(queryFilter)
-    .then(res => {
-      if(res.size === 0) {
-        console.log('No results');
-      }
-      setItems(res.docs.map(doc => ({id: doc.id, ...doc.data()})))
-    })
-    
-  }, [])
-
-  console.log(items)
 
   return (
     <div className="flex">
@@ -35,8 +19,8 @@ function Games() {
       <div className="w-3/4 p-4 ">
         <img src={TxtGames} alt="TxtGames" className="photoGames" />
         <div className="flex flex-wrap justify-start" id="CardProducto">
-          {items.length > 0 ? (
-            items
+          {ItemCard.length > 0 ? (
+            ItemCard
               .map((gamer) => (
                 <Cards
                   key={gamer.key}

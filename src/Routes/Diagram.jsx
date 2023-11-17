@@ -22,6 +22,7 @@ function Diagram() {
           <Route path="/Productos/Games" element={<Games />} />
           <Route path="/Productos/Games/:id" element={<Games />} />
           <Route path="/Productos/Console" element={<Console />} />
+          <Route path="/Productos/Console/:id" element={<Console />} />
           <Route path="/Productos/Accessories" element={<Accessories />} />
           <Route path="/Productos/TechnicalService" element={<TechnicalService />} />
           <Route path="/CartDetail" element={<CartDetail />} />

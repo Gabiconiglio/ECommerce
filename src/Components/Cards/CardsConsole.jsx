@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ModalDetail from "../ModalDetail/ModalDetail.jsx";
 import "../Cards/Cards.css";
 
-function Cards(props) {
+function CardsConsole(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { isChecked } = useToggle();
   const navigate = useNavigate();
@@ -15,12 +15,12 @@ function Cards(props) {
     setTimeout(() => {
       document.getElementById("my_modal_2").showModal();
     }, 0);
-    navigate(`/Productos/Games/${props.customKey}`);
+    navigate(`/Productos/${props.category}/${props.customKey}`);
   };
 
   const closeAndRestoreRoute = () => {
     setIsModalOpen(false);
-    navigate("/Productos/Games");
+    navigate(`/Productos/${props.category}`);
   };
 
   return (
@@ -38,15 +38,6 @@ function Cards(props) {
         <div className="card-body">
           <h2 className="card-title">{props.name}</h2>
           <div className="textoCard">
-            <div>
-              <p>
-                {" "}
-                <strong>Platform:</strong><br/> {props.console}
-              </p>
-              <p>
-                <strong>Format:</strong><br/> {props.format}
-              </p>
-            </div>
             <div>
               <p>
                 <strong>Conditions:</strong><br/> {props.conditions}
@@ -79,4 +70,4 @@ function Cards(props) {
   );
 }
 
-export default Cards;
+export default CardsConsole;

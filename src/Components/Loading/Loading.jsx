@@ -1,15 +1,19 @@
-import "../Loading/Loading.css"
+import "ldrs/ring";
+import { lineSpinner } from "ldrs";
+import "../Loading/Loading.css";
 
 function Loading(props) {
-
-  const colorLoad=props.color+"Loading"
+  const colorLoad = props.color + "Loading";
+  lineSpinner.register();
 
   return (
     <>
-      <span className="loading loading-dots loading-xs" id={colorLoad}></span>
-      <span className="loading loading-dots loading-sm" id={colorLoad}></span>
-      <span className="loading loading-dots loading-md" id={colorLoad}></span>
-      <span className="loading loading-dots loading-lg" id={colorLoad}></span>
+      <l-line-spinner
+        size="40"
+        stroke="3"
+        speed="1"
+        color="black"
+      ></l-line-spinner>
     </>
   );
 }
