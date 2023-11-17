@@ -14,7 +14,6 @@ import CartDetail from "../Screens/CartDetail.jsx";
 function Diagram() {
   return (
     <>
-    
       <BrowserRouter>
         <Navbar />
         <Routes>

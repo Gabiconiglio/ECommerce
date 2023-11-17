@@ -9,6 +9,15 @@
     "Lucida Sans", Arial, sans-serif;
 }
 #drawerConsole {
-  margin-top: 100px;
+  margin-top: 300px;
   margin-bottom: 100px;
+}
+.photoConsole{
+  width: 400px;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 70px;
 }

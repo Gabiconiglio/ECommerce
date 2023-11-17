@@ -16,6 +16,7 @@ function ModalLogIn() {
           <h3 className="font-bold text-lg" id="modalTitulo">
             Log In
           </h3>
+          <form>
           <div className="flex items-center" id="modalUsuario">
             <AiOutlineUser id="iconoModalUsuario" />
             <input
@@ -34,6 +35,7 @@ function ModalLogIn() {
               id="textoContraseña"
             />
           </div>
+          </form>
           <p id="olvidasteContraseña">
             ¿Olvidaste tu contraseña? Haz click <u>Aquí</u>
           </p>

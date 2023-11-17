@@ -41,18 +41,18 @@ function Cards(props) {
             <div>
               <p>
                 {" "}
-                <strong>Platform:</strong> {props.console}
+                <strong>Platform:</strong><br/> {props.console}
               </p>
               <p>
-                <strong>Format:</strong> {props.format}
+                <strong>Format:</strong><br/> {props.format}
               </p>
             </div>
             <div>
               <p>
-                <strong>Conditions:</strong> {props.conditions}
+                <strong>Conditions:</strong><br/> {props.conditions}
               </p>
               <p>
-                <strong>Price:</strong> ${props.price}
+                <strong>Price:</strong><br/> ${props.price}
               </p>
             </div>
           </div>

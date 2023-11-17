@@ -8,7 +8,16 @@
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
-#drawerAccessories {
-  margin-top: 100px;
+#drawerAccsessories {
+  margin-top: 300px;
   margin-bottom: 100px;
+}
+.photoAccessories{
+  width: 300px;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 70px;
 }

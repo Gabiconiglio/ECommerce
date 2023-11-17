@@ -100,6 +100,7 @@ function ModalDetail({ closeModal, Platform, customKey, price }) {
               {data.description_raw
                 ? data.description_raw.split(".")[1] + "."
                 : "No description available"}
+                
             </p>
             <p>
               <strong>Release Date:</strong>{" "}

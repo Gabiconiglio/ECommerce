@@ -1,6 +1,5 @@
-import { React, useState} from "react";
-import { Url_Games, api_key } from "../Components/Links/Link.jsx";
-import { useFetch } from "../Components/Hook/useFetch.js";
+import { React, useState,useEffect } from "react";
+import { getFirestore, getDocs, collection,query,where} from 'firebase/firestore'
 import Loading from "../Components/Loading/Loading.jsx"
 import Cards from "../Components/Cards/Cards.jsx";
 import Drawer from "../Components/Drawer/Drawer.jsx";
@@ -8,35 +7,25 @@ import TxtGames from "../Components/Imagines/TxtGames.png"
 import "../Screens/Css/Games.css";
 
 function Games() {
-  
-  const url=Url_Games + api_key
-  const [prices, setPrices] = useState([]);
-  const [data] = useFetch(url);
+  const [items, setItems] = useState({})
 
+  useEffect(()=> {
+    const db = getFirestore()
 
-  const handleRandomPrices = () => {
-    const min = 2000;
-    const max = 5000;
-    const randomPrice = Math.floor(Math.random() * (max - min + 1)) + min;
-    return randomPrice;
-  };
+    const itemsRef = collection(db, 'Games')
+    const queryFilter = query(itemsRef, where('category', '==', 'Games'));
 
-  const getRandomCondition = () => {
-    const conditions = ["New", "Used"];
-    const randomIndex = Math.floor(Math.random() * conditions.length);
-    return conditions[randomIndex];
-  };
-  const getRandomPlatform = () => {
-    const Platform = ["0", "1"];
-    const randomIndex = Math.floor(Math.random() * Platform.length);
-    return Platform[randomIndex];
-  };
+    getDocs(queryFilter)
+    .then(res => {
+      if(res.size === 0) {
+        console.log('No results');
+      }
+      setItems(res.docs.map(doc => ({id: doc.id, ...doc.data()})))
+    })
+    
+  }, [])
 
-  const getRandomFormat = () => {
-    const Format = ["Physical", "Digital"];
-    const randomIndex = Math.floor(Math.random() * Format.length);
-    return Format[randomIndex];
-  };
+  console.log(items)
 
   return (
     <div className="flex">
@@ -46,21 +35,18 @@ function Games() {
       <div className="w-3/4 p-4 ">
         <img src={TxtGames} alt="TxtGames" className="photoGames" />
         <div className="flex flex-wrap justify-start" id="CardProducto">
-          {data.length > 0 ? (
-            data
-              .slice(0, 20)
+          {items.length > 0 ? (
+            items
               .map((gamer) => (
                 <Cards
-                  key={gamer.id}
-                  customKey={gamer.id}
+                  key={gamer.key}
+                  customKey={gamer.key}
                   name={gamer.name}
                   background_image={gamer.background_image}
-                  price={handleRandomPrices()}
-                  console={
-                    gamer.parent_platforms[getRandomPlatform()].platform.name
-                  }
-                  format={getRandomFormat()}
-                  conditions={getRandomCondition()}
+                  price={gamer.price}
+                  console={gamer.console}
+                  format={gamer.format}
+                  conditions={gamer.conditions}
                 />
               ))
           ) : (
