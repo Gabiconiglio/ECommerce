@@ -15,12 +15,12 @@ function Cards(props) {
     setTimeout(() => {
       document.getElementById("my_modal_2").showModal();
     }, 0);
-    navigate(`/Productos/Games/${props.customKey}`);
+    navigate(`/Productos/${props.category}/Detail/${props.customKey}`);
   };
 
   const closeAndRestoreRoute = () => {
     setIsModalOpen(false);
-    navigate("/Productos/Games");
+    navigate(`/Productos/${props.category}`);
   };
 
   return (
@@ -43,9 +43,11 @@ function Cards(props) {
                 {" "}
                 <strong>Platform:</strong><br/> {props.console}
               </p>
+              {props.format?
               <p>
                 <strong>Format:</strong><br/> {props.format}
               </p>
+              :null}
             </div>
             <div>
               <p>

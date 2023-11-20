@@ -31,6 +31,7 @@ function Games() {
                   console={gamer.console}
                   format={gamer.format}
                   conditions={gamer.conditions}
+                  category={gamer.category}
                 />
               ))
           ) : (

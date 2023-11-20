@@ -1,7 +1,7 @@
 import { React} from "react";
 import UseFirestoreData from "../Components/Hook/useFetchFire.js"
 import Loading from "../Components/Loading/Loading.jsx"
-import CardsConsole from "../Components/Cards/CardsConsole.jsx";
+import Cards from "../Components/Cards/Cards.jsx";
 import Drawer from "../Components/Drawer/Drawer.jsx";
 import TxtConsole from "../Components/Imagines/TxtConsole.png";
 import "../Screens/Css/Console.css";
@@ -21,7 +21,7 @@ function Console() {
           <div className="flex flex-wrap justify-start" id="CardProducto">
             {ItemCard.length > 0 ? (
               ItemCard.map((gamer) => (
-                <CardsConsole
+                <Cards
                   key={gamer.key}
                   customKey={gamer.key}
                   name={gamer.name}
@@ -29,6 +29,7 @@ function Console() {
                   price={gamer.price}
                   conditions={gamer.conditions}
                   category={gamer.category}
+                  console={gamer.console}
                 />
               ))
             ) : (

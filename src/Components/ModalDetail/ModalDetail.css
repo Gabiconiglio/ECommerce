@@ -1,28 +1,31 @@
-#textModalDetail{
-    text-align: center;
-    border-bottom: 2px solid black;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+#textModalDetail {
+  text-align: center;
+  border-bottom: 2px solid black;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
-#InfoDetail{
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+#InfoDetail {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-    margin-top: 2px;
-
+  margin-top: 2px;
 }
-#btnCloseModal{
-    margin-left: 200px;
+#btnCloseModal {
+  margin-left: 200px;
 }
 
 .text-dark {
-    color: #fff;
+  color: #fff;
 }
 .text-light {
-    color: #000;
+  color: #000;
 }
-.counteBuy{
-    margin-top: 10px;
+.counteBuy {
+  margin-top: 10px;
 }
-.count-dark{
-    background-color: white;
+.count-dark {
+  background-color: white;
+}
+#ImageModal {
+  width: 100%;
+  height: 250px;
 }

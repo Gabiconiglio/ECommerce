@@ -90,7 +90,7 @@ function ModalDetail({ closeModal, customKey, price }) {
           {ItemCard.length > 0 ? (
             ItemCard.map((gamer) => (
               <>
-                <img src={gamer.background_image} alt="Games" id="" />
+                <img src={gamer.background_image} alt="Games" id="ImageModal" />
                 <h3
                   className={`font-bold text-lg ${textClass}`}
                   id="textModalDetail"
