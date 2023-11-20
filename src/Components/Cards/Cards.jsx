@@ -62,7 +62,7 @@ function Cards(props) {
             <button
               tabIndex={28}
               className="btn btn-ghost btn-circle"
-              id="circleInfo"
+              id="circleInfo1"
               onClick={openModal}
             >
               <AiOutlineInfoCircle id="iconoModalInfo" />

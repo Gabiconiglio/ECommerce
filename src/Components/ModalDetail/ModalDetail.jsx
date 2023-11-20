@@ -88,7 +88,7 @@ function ModalDetail({ closeModal, customKey, price }) {
           {isLoading ? <Loading color={`${textClass}`} /> : null}
           {ItemCard.length > 0 ? (
             ItemCard.map((gamer) => (
-              <>
+              <div key={gamer.key}>
                 <img src={gamer.background_image} alt="Games" id="ImageModal" />
                 <h3
                   className={`font-bold text-lg ${textClass}`}
@@ -128,7 +128,7 @@ function ModalDetail({ closeModal, customKey, price }) {
                   </p>
                 </div>
                 <Rating Rank={gamer.rating} color={`${textClass}`} />
-              </>
+              </div>
             ))
           ) : (
             <Loading color={`${textClass}`} />

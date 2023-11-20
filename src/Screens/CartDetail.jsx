@@ -36,7 +36,7 @@ function CartDetail() {
     };
 
     const productIds = Object.keys(productStates);
-    console.log(productIds,"prod")
+   
     if (productIds.length > 0) {
       const promises = productIds.map((customKey) =>
         fetchDataForProduct(customKey)
