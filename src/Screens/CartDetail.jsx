@@ -18,6 +18,7 @@ function CartDetail() {
 
       try {
         const res = await getDocs(queryFilter);
+       
 
         if (res.size === 0) {
           console.log("No results for custom key:", customKey);
@@ -35,7 +36,7 @@ function CartDetail() {
     };
 
     const productIds = Object.keys(productStates);
-
+    console.log(productIds,"prod")
     if (productIds.length > 0) {
       const promises = productIds.map((customKey) =>
         fetchDataForProduct(customKey)

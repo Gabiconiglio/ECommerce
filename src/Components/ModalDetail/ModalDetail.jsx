@@ -77,7 +77,6 @@ function ModalDetail({ closeModal, customKey, price }) {
     return () => clearTimeout(timeout);
   }, []);
 
-  console.log(ItemCard);
   return (
     <dialog
       id="my_modal_2"
