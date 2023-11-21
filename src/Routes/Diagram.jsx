@@ -19,6 +19,7 @@ function Diagram() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Detail/:id" element={<Home />} />
           <Route path="/Productos" element={<Products />} />
           <Route path="/Productos/Games" element={<Games />} />
           <Route path="/Productos/Games/Detail/:id" element={<Games />} />
@@ -28,6 +29,7 @@ function Diagram() {
           <Route path="/Productos/Accessories/Detail/:id" element={<Accessories  />} />
           <Route path="/Productos/TechnicalService" element={<TechnicalService />} />
           <Route path="/Search/:query" element={<SearchScreen/>} />
+          <Route path="/Search/:query/Detail/:id" element={<SearchScreen/>} />
           <Route path="/CartDetail" element={<CartDetail />} />
           <Route path="/About" element={<About />} />
           <Route path="*" element={<Notfound404 />} />

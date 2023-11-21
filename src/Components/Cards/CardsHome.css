@@ -1,0 +1,14 @@
+#textHome {
+    font-size: 40px;
+    align-items: left;
+    margin-top: 50px;
+    margin-left: 92px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  }
+  #CardHome{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }

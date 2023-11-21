@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, query, where, getDocs} from 'firebase/firestore';
 
 const UseFirestoreData = (collectionName,condition,category) => {
   const [ItemCard, setItems] = useState([]);

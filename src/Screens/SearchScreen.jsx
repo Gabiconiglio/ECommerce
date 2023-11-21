@@ -2,13 +2,13 @@ import { useState} from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../Components/Loading/Loading.jsx"
 import Cards from "../Components/Cards/Cards.jsx";
-import UseFirestoreDataSearch from "../Components/Hook/useFetchCon.js"
+import UseFirestoreData from "../Components/Hook/useFetchFire.js"
 import "../Screens/Css/SearchScreen.css"
 
 function SearchScreen(){
     const[search, setSearch]=useState([])
     const { query } = useParams();
-    const { ItemCard, loading } = UseFirestoreDataSearch('Games','console', query);
+    const { ItemCard, loading } = UseFirestoreData('Games','console', query);
 
     return (
         <>
@@ -28,6 +28,8 @@ function SearchScreen(){
                   format={gamer.format}
                   conditions={gamer.conditions}
                   category={gamer.category}
+                  cond={"Search"}
+                  query={query}
                 />
               ))
           ) : (

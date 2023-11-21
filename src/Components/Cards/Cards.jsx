@@ -9,18 +9,42 @@ function Cards(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { isChecked } = useToggle();
   const navigate = useNavigate();
+  const Screen=props.cond;
+  const query=props.query;
 
   const openModal = () => {
     setIsModalOpen(true);
     setTimeout(() => {
       document.getElementById("my_modal_2").showModal();
     }, 0);
-    navigate(`/Productos/${props.category}/Detail/${props.customKey}`);
+    if(Screen ==="Home")
+    {
+      navigate(`/Detail/${props.customKey}`);
+    }
+    if(Screen ==="Search")
+    {
+      navigate(`/Search/${query}/Detail/${props.customKey}`);
+    }
+    else{
+      navigate(`/Productos/${props.category}/Detail/${props.customKey}`);
+    }
+    
   };
 
   const closeAndRestoreRoute = () => {
     setIsModalOpen(false);
-    navigate(`/Productos/${props.category}`);
+    if(Screen=="Home")
+    {
+      navigate("/");
+    }
+    if(Screen ==="Search")
+    {
+      navigate(`/Search/${query}`);
+    }
+    else{
+      navigate(`/Productos/${props.category}`);
+    }
+    
   };
 
   return (
