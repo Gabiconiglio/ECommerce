@@ -10,6 +10,7 @@ import About from "../Screens/About.jsx";
 import Footer from "../Components/Footer/Footer.jsx";
 import Notfound404 from "../Screens/NotFount404.jsx"
 import CartDetail from "../Screens/CartDetail.jsx";
+import SearchScreen from "../Screens/SearchScreen.jsx";
 
 function Diagram() {
   return (
@@ -26,6 +27,7 @@ function Diagram() {
           <Route path="/Productos/Accessories" element={<Accessories />} />
           <Route path="/Productos/Accessories/Detail/:id" element={<Accessories  />} />
           <Route path="/Productos/TechnicalService" element={<TechnicalService />} />
+          <Route path="/Search/:query" element={<SearchScreen/>} />
           <Route path="/CartDetail" element={<CartDetail />} />
           <Route path="/About" element={<About />} />
           <Route path="*" element={<Notfound404 />} />
