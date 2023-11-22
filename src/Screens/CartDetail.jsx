@@ -19,7 +19,6 @@ function CartDetail() {
       try {
         const res = await getDocs(queryFilter);
        
-
         if (res.size === 0) {
           console.log("No results for custom key:", customKey);
         } else {
@@ -43,7 +42,6 @@ function CartDetail() {
       );
       Promise.all(promises)
         .then((resolvedItems) => {
-     
           const itemsArray = resolvedItems.flat();
           setProductData(itemsArray);
         })
@@ -54,7 +52,6 @@ function CartDetail() {
           setIsLoading(false);
         });
     } else {
-
       setIsLoading(false);
     }
   }, [productStates]);

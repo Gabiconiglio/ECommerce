@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import {Link} from "react-router-dom";
 import { CounterContext } from "../Context/CounterContext.jsx";
 import { useToggle } from "../Context/ToggleContext.jsx";
 import { useProductContext } from "../Context/ProductContext.jsx";
@@ -10,7 +11,7 @@ import Rating from "../Rating/Rating.jsx";
 import Loading from "../Loading/Loading.jsx";
 import "../ModalDetail/ModalDetail.css";
 
-function ModalDetail({ closeModal, customKey, price }) {
+function ModalDetail({ closeModal, customKey, price}) {
   const { isChecked } = useToggle();
   const { ItemCard, loading } = UseFirestoreData("Games", "key", customKey);
 
@@ -76,6 +77,8 @@ function ModalDetail({ closeModal, customKey, price }) {
 
     return () => clearTimeout(timeout);
   }, []);
+  
+
 
   return (
     <dialog
