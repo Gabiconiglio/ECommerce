@@ -5,12 +5,25 @@
   margin-left: 50px;
   margin-right: 50px;
 }
-.card-title {
+.card-titleCart {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   border-bottom: 2px solid black;
-  text-align: left;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+  font-size: 18px;
+}
+#imageCardsDetail {
+  width: 300px;
+  height: 200px;
+}
+.card-priceCart{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 18px;
+  margin-top: 5px;
 }

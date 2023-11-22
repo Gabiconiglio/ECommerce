@@ -1,27 +1,20 @@
-import { useState } from "react";
+import { React,useState,Context } from "react";
 import { useToggle } from "../Context/ToggleContext.jsx";
-// import { AiOutlineInfoCircle } from "react-icons/ai";
-// import { useNavigate } from "react-router-dom";
-import ModalDetail from "../ModalDetail/ModalDetail.jsx";
+import { useProductContext } from "../Context/ProductContext.jsx";
+import Counter from "../Counter/Counter.jsx";
 import "../CardsDetail/CardsDetail.css";
 
 function CardsDetail(props) {
-  //   const [isModalOpen, setIsModalOpen] = useState(false);
   const { isChecked } = useToggle();
-  //   const navigate = useNavigate();
+  const { productStates, updateProductState } = useProductContext();
+  const textClass = isChecked ? "text-light" : "text-dark";
+  const [count, setCount] = useState(props.count);
 
-  //   const openModal = () => {
-  //     setIsModalOpen(true);
-  //     setTimeout(() => {
-  //       document.getElementById("my_modal_2").showModal();
-  //     }, 0);
-  //     navigate(`/Productos/Games/${props.customKey}`);
-  //   };
+   const handleCountUpdate = (newCount) => {
+      setCount(newCount);
+      updateProductState(props.customKey, newCount, props.price);
+   };
 
-  //   const closeAndRestoreRoute = () => {
-  //     setIsModalOpen(false);
-  //     navigate("/CartDetail");
-  //   };
 
   return (
     <>
@@ -33,20 +26,27 @@ function CardsDetail(props) {
         data-theme={isChecked ? "light" : "dark"}
       >
         <figure>
-          <img src={props.background_image} alt="Shoes" id="imageCards" />
+          <img src={props.background_image} alt="Shoes" id="imageCardsDetail" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{props.name}</h2>
+          <h3 className="card-titleCart">{props.name}</h3>
+          <h3 className="card-priceCart">
+            <strong>Price: $</strong>
+            {props.price}
+          </h3>
+          <div className="card-actions justify-center">
+            <div>
+              <div className="join">
+                <Counter
+                  color={`${textClass}`}
+                  count={count}
+                  onCountUpdate={handleCountUpdate}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      {/* {isModalOpen && (
-        <ModalDetail
-          closeModal={closeAndRestoreRoute}
-          Platform={props.console}
-          customKey={props.customKey}
-          price={props.price}
-        />
-      )} */}
     </>
   );
 }
