@@ -2,8 +2,8 @@
   text-align: center;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  font-size: 24px;
-  margin: 20px 0;
+  font-size: 50px;
+  margin-top: 100px;
 }
 .loadingCartDetail {
   margin-left: 100px;
@@ -27,11 +27,68 @@
   padding: 10px;
 }
 #titleCartDetail{
-  text-align: center;
-  justify-content: center;
   display: flex;
+  justify-content: center;
+  text-align: center;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  font-size: 24px;
-  margin-top: 10px;
+  font-size: 50px;
+  margin-top: 30px;
+  margin: 0 auto;
+}
+#textEmptycart{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 50px;
+  margin-top: 100px;
+}
+#btnEmptyCart{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+#separator{
+  margin-bottom: 50px;
+}
+#btnBuyCartDetail{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+#invoiceDetail{
+  margin-top: 20px;
+}
+#subtotalCart{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+    margin-top: 20px;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+#infoForm{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+    font-size: 30px;
+    margin-right: 10px;
+}
+#inputForm{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+#btnBuyCartDetailDiv{
+  margin-top: 70px;
+  margin-bottom: 150px;
 }

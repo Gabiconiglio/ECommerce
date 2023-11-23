@@ -13,7 +13,6 @@ import "../ModalDetail/ModalDetail.css";
 function ModalDetail({ closeModal, customKey, price}) {
   const { isChecked } = useToggle();
   const { ItemCard} = UseFirestoreData("Games", "key", customKey);
-
   const { items, setItems } = useContext(CounterContext);
   const [isLoading, setIsLoading] = useState(true);
   const [showAlert, setShowAlert] = useState(false);
