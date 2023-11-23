@@ -44,7 +44,7 @@ function ModalDetail({ closeModal, customKey, price}) {
 
       } else {
         const newItem = {
-          id: customKey,
+          key: customKey,
           CantItem: count,
         };
         existingItems.push(newItem);

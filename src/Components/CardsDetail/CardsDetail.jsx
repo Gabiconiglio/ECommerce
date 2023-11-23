@@ -1,6 +1,7 @@
 import { React,useState,Context } from "react";
 import { useToggle } from "../Context/ToggleContext.jsx";
 import { useProductContext } from "../Context/ProductContext.jsx";
+import { FaRegTrashCan } from "react-icons/fa6";
 import Counter from "../Counter/Counter.jsx";
 import "../CardsDetail/CardsDetail.css";
 
@@ -14,7 +15,6 @@ function CardsDetail(props) {
       setCount(newCount);
       updateProductState(props.customKey, newCount, props.price);
    };
-
 
   return (
     <>
@@ -44,7 +44,10 @@ function CardsDetail(props) {
                 />
               </div>
             </div>
-          </div>
+            </div>
+            <button onClick={props.removeItem} className="btn btn-ghost btn-circle" id="trash">
+            <FaRegTrashCan id="iconTrash"/>
+            </button>
         </div>
       </div>
     </>

@@ -27,3 +27,13 @@
   font-size: 18px;
   margin-top: 5px;
 }
+#trash{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+#iconTrash{
+  width: 23px;
+  height: 23px;
+}

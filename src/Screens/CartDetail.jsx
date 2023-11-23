@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect,useCallback  } from "react";
 import { useProductContext } from "../Components/Context/ProductContext.jsx";
 import {
   getFirestore,
@@ -16,6 +16,12 @@ function CartDetail() {
   const { productStates } = useProductContext();
   const [productData, setProductData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const removeItem = useCallback((idProduct) => {
+    const filteredCart = productData.filter((item) => item.key !== idProduct);
+    setProductData(filteredCart);
+    localStorage.setItem('items', JSON.stringify(filteredCart));
+  }, [productData]);
 
 
   useEffect(() => {
@@ -46,7 +52,7 @@ function CartDetail() {
     const storedItems = JSON.parse(localStorage.getItem("items")) || [];
     
     if (storedItems.length > 0) {
-      const promises = storedItems.map((item) => fetchDataForProduct(item.id, item.CantItem));
+      const promises = storedItems.map((item) => fetchDataForProduct(item.key, item.CantItem));
       Promise.all(promises)
         .then((resolvedItems) => {
           const itemsArray = resolvedItems.filter(Boolean).flat();
@@ -62,6 +68,7 @@ function CartDetail() {
       setIsLoading(false);
     }
   }, []);
+
 
   return (
     <div>
@@ -81,6 +88,7 @@ function CartDetail() {
                 price={item.price}
                 count={item.CantItem}
                 customKey={item.id}
+                removeItem={() => removeItem(item.key)}
               />
             </div>
           ))}
