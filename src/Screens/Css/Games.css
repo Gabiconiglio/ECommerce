@@ -2,10 +2,10 @@
   margin-top: 326px;
   margin-bottom: 100px;
 }
-#CardProducto {
+#CardProducto{
   margin-left: 10px;
   margin-right: 10px;
-  margin-bottom: 150px;
+  margin-bottom: 200px;
   margin-top: 1px;
 }
 .card {
@@ -20,4 +20,7 @@
   display: flex;
   margin: 0 auto;
   margin-top: 1px;
+}
+#SepGames{
+  margin-bottom: 70px;
 }

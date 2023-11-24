@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React} from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import "../Counter/Counter.css"
 

@@ -54,16 +54,16 @@
 #separator{
   margin-bottom: 50px;
 }
-#btnBuyCartDetail{
+/* #btnBuyCartDetail{
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-}
+} */
 #invoiceDetail{
   margin-top: 20px;
 }
-#subtotalCart{
+/* #subtotalCart{
   display: flex;
   justify-content: center;
   text-align: center;
@@ -72,8 +72,8 @@
     margin-top: 20px;
     font-size: 30px;
     margin-bottom: 30px;
-}
-#infoForm{
+} */
+/* #infoForm{
   display: flex;
   justify-content: center;
   text-align: center;
@@ -81,14 +81,14 @@
     "Lucida Sans", Arial, sans-serif;
     font-size: 30px;
     margin-right: 10px;
-}
-#inputForm{
+} */
+/* #inputForm{
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-}
-#btnBuyCartDetailDiv{
+} */
+/* #btnBuyCartDetailDiv{
   margin-top: 70px;
   margin-bottom: 150px;
-}
+} */

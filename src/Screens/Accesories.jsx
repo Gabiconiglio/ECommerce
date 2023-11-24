@@ -19,7 +19,7 @@ function Accessories() {
         <div className="" id="drawerAccsessories">
           <Drawer plat={false} ranking={false} />
         </div>
-        <div className="w-3/4 p-4 ">
+        <div className="w-3/4 p-4 " id="SepAccessories">
           <img
             src={TxtAccessories}
             alt="TxtGames"

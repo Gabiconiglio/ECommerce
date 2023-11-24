@@ -1,0 +1,44 @@
+#subtotalCart {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin-top: 20px;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+#inputForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+#infoForm1{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 30px;
+  margin-right: 10px;
+}
+#infoForm2{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 30px;
+  margin-right: 10px;
+}
+#btnBuyCartDetailDiv {
+  margin-top: 70px;
+  margin-bottom: 150px;
+}
+#btnBuyCartDetail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}

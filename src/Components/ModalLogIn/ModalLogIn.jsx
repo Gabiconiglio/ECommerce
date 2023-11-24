@@ -43,12 +43,12 @@ function ModalLogIn() {
             </div>
           </form>
           <p id="olvidasteContraseña">
-            ¿Olvidaste tu contraseña? Haz click <u>Aquí</u>
+          ¿Did you forget your password? Click <u>Here</u>
           </p>
           <div className="modal-action">
             <form method="dialog">
               <button className="btn btn-outline" id="btnEnviar">
-                Enviar
+              Send
               </button>
             </form>
           </div>

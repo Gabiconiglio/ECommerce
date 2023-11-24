@@ -16,7 +16,7 @@ function Console() {
         <div className="" id="drawerConsole">
           <Drawer plat={false} ranking={false} />
         </div>
-        <div className="w-3/4 p-4 ">
+        <div className="w-3/4 p-4 " id="SepConsole">
           <img src={TxtConsole} alt="TxtGames" className="photoConsole" />
           <div className="flex flex-wrap justify-start" id="CardProducto">
             {ItemCard.length > 0 ? (

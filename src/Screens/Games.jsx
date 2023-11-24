@@ -16,7 +16,7 @@ function Games() {
       <div className="" id="drawerGames">
         <Drawer plat={true} ranking={true} />
       </div>
-      <div className="w-3/4 p-4 ">
+      <div className="w-3/4 p-4 " id="SepGames">
         <img src={TxtGames} alt="TxtGames" className="photoGames" />
         <div className="flex flex-wrap justify-start" id="CardProducto">
           {ItemCard.length > 0 ? (

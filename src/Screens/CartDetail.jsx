@@ -1,153 +1,39 @@
-import { React, useState, useEffect, useCallback, useRef } from "react";
-import { useProductContext } from "../Components/Context/ProductContext.jsx";
-import {getFirestore,collection,query,where,getDocs,addDoc} from "firebase/firestore";
-import { useToggle } from "../Components/Context/ToggleContext.jsx";
+import { React} from "react";
+import {getFirestore,collection,addDoc} from "firebase/firestore";
+import {useCartFunctions} from "../Components/Hook/CartFunctions.js"
 import { CiGift } from "react-icons/ci";
+import Form from "../Components/Form/Form.jsx"
 import Loading from "../Components/Loading/Loading.jsx";
 import CardsDetail from "../Components/CardsDetail/CardsDetail.jsx";
 import "./Css/CartDetail.css";
 
 function CartDetail() {
-  const { productStates } = useProductContext();
-  const { isChecked } = useToggle();
-  const [productData, setProductData] = useState([]);
-  const [Total, setTotal] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-  const [text, setText] = useState(true);
-  const [btnEmpty, setbtnEmpty] = useState(false);
-  const userNameRef = useRef(null);
-  const userEmailRef = useRef(null);
 
-
-  const UpdateInfo = useCallback((prevProductData) => {
-    const existingItemsJSON = localStorage.getItem("items");
-    const existingItems = existingItemsJSON ? JSON.parse(existingItemsJSON) : [];
-  
-    const updatedProductData = existingItems.map((item) => {
-      const existingItemIndex = prevProductData.findIndex((product) => product.key === item.key);
-  
-      if (existingItemIndex !== -1) {
-        return {
-          ...prevProductData[existingItemIndex],
-          CantItem: item.CantItem,
-        };
-      }
-  
-      return {
-        key: item.key,
-        CantItem: item.CantItem,
-        ...doc.data(),
-      };
-    });
-  
-    const updatedTotal = updatedProductData.reduce((acc, item) => acc + item.price * item.CantItem, 0);
-  
-    return {
-      productData: updatedProductData,
-      total: updatedTotal,
-    };
-  }, []);
-
-
-  const removeItem = useCallback(
-    (idProduct) => {
-      const filteredCart = productData.filter((item) => item.key !== idProduct);
-      setProductData(filteredCart);
-      localStorage.setItem("items", JSON.stringify(filteredCart));
-      alert(`the product ${idProduct} was deleted correctly `);
-    },
-    [productData]
-  );
-
-  const removeAllItem = useCallback(() => {
-    setProductData([]);
-    localStorage.setItem("items", JSON.stringify([]));
-    alert("Cart was deleted correctly!!");
-    setText(true);
-    setbtnEmpty(false);
-  }, [productData]);
-
-  useEffect(() => {
-    const fetchDataForProduct = async (id, cantItem) => {
-      const db = getFirestore();
-      const itemsRef = collection(db, "Games");
-      const queryFilter = query(itemsRef, where("key", "==", id));
-
-      try {
-        const res = await getDocs(queryFilter);
-
-        if (res.size === 0) {
-          console.log("No results for custom key:", id);
-        } else {
-          const itemsArray = res.docs.map((doc) => ({
-            id: doc.id,
-            CantItem: cantItem,
-            ...doc.data(),
-          }));
-          setProductData(itemsArray);
-          return itemsArray;
-        }
-      } catch (error) {
-        console.error("Error fetching data for custom key:", id, error);
-        throw error;
-      }
-    };
-
-    const storedItems = JSON.parse(localStorage.getItem("items")) || [];
-
-    if (storedItems.length > 0) {
-      const promises = storedItems.map((item) =>
-        fetchDataForProduct(item.key, item.CantItem)
-      );
-      Promise.all(promises)
-        .then((resolvedItems) => {
-          const itemsArray = resolvedItems.filter(Boolean).flat();
-          setProductData(itemsArray);
-          setText(false);
-          setbtnEmpty(true);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    } else {
-      setIsLoading(false);
-    }
-  }, []);
+  const {isChecked,productData,Total,isLoading,text,btnEmpty,userNameRef,userEmailRef,UpdateInfo,removeItem,removeAllItem,setProductData,setTotal} = useCartFunctions();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const updatedInfo = await UpdateInfo(productData);
-  
+
+   
     setProductData(updatedInfo.productData);
     setTotal(updatedInfo.total);
-  
+
     const db = getFirestore();
     const collectionRef = collection(db, "orders");
-  
+
     const order = {
       userName: userNameRef.current.value,
       userEmail: userEmailRef.current.value,
-      items: updatedInfo.productData, 
+      items: updatedInfo.productData,
       totalPrice: updatedInfo.total,
     };
-  
+
     addDoc(collectionRef, order).then((res) =>
       alert(`The order has been sent successfully, your order number is: ${res.id}`)
     );
   };
-
-  
-  useEffect(() => {
-    if (productData.length > 0) {
-      const total2 = productData.reduce((acc, item) => acc + item.price * item.CantItem, 0);
-      setTotal(total2);
-    }
-  }, [productData]);
-
 
   return (
     <div>
@@ -192,40 +78,12 @@ function CartDetail() {
           </button>
           <div id="invoiceDetail">
             <h3 id="titleCartDetail">Purchase Detail</h3>
-            <form onSubmit={handleSubmit}>
-              <p id="subtotalCart">
-                <strong>Subtotal: $</strong> {Total}
-              </p>
-              <div className="join" id="inputForm">
-                <input
-                  ref={userNameRef}
-                  type="text"
-                  placeholder="Enter your full name"
-                  className="input input-bordered input-sm w-full max-w-xs"
-                  id="infoForm"
-                  required
-                />
-                <input
-                  ref={userEmailRef}
-                  type="email"
-                  placeholder="Enter your E-mail"
-                  className="input input-bordered input-sm w-full max-w-xs"
-                  id="infoForm"
-                  required
-                />
-              </div>
-              <div id="btnBuyCartDetailDiv">
-                <button
-                  className={
-                    isChecked ? "btn btn-outline" : "btn btn-active btn-neutral"
-                  }
-                  type="submit"
-                  id="btnBuyCartDetail"
-                >
-                  Buy Now
-                </button>
-              </div>
-            </form>
+            <Form
+            handleSubmit={handleSubmit}
+            Total={Total}
+            userNameRef={userNameRef}
+            userEmailRef={userEmailRef}
+            />
           </div>
         </>
       ) : null}
