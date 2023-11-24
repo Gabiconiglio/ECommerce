@@ -11,10 +11,21 @@ function CardsDetail(props) {
   const textClass = isChecked ? "text-light" : "text-dark";
   const [count, setCount] = useState(props.count);
 
-   const handleCountUpdate = (newCount) => {
-      setCount(newCount);
-      updateProductState(props.customKey, newCount, props.price);
-   };
+  const handleCountUpdate = (newCount) => {
+    setCount(newCount);
+    updateProductState(props.customKey, newCount, props.price);
+    
+  
+    const existingItemsJSON = localStorage.getItem("items");
+    const existingItems = existingItemsJSON ? JSON.parse(existingItemsJSON) : [];
+
+    const existingItemIndex = existingItems.findIndex(item => item.key === props.customKey);
+
+    if (existingItemIndex !== -1) {
+      existingItems[existingItemIndex].CantItem = newCount;
+      localStorage.setItem("items", JSON.stringify(existingItems));
+    }
+  };
 
   return (
     <>

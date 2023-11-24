@@ -1,13 +1,6 @@
 import { React, useState, useEffect, useCallback, useRef } from "react";
 import { useProductContext } from "../Components/Context/ProductContext.jsx";
-import {
-  getFirestore,
-  collection,
-  query,
-  where,
-  getDocs,
-  addDoc
-} from "firebase/firestore";
+import {getFirestore,collection,query,where,getDocs,addDoc} from "firebase/firestore";
 import { useToggle } from "../Components/Context/ToggleContext.jsx";
 import { CiGift } from "react-icons/ci";
 import Loading from "../Components/Loading/Loading.jsx";
@@ -18,11 +11,43 @@ function CartDetail() {
   const { productStates } = useProductContext();
   const { isChecked } = useToggle();
   const [productData, setProductData] = useState([]);
+  const [Total, setTotal] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [text, setText] = useState(true);
   const [btnEmpty, setbtnEmpty] = useState(false);
   const userNameRef = useRef(null);
   const userEmailRef = useRef(null);
+
+
+  const UpdateInfo = useCallback((prevProductData) => {
+    const existingItemsJSON = localStorage.getItem("items");
+    const existingItems = existingItemsJSON ? JSON.parse(existingItemsJSON) : [];
+  
+    const updatedProductData = existingItems.map((item) => {
+      const existingItemIndex = prevProductData.findIndex((product) => product.key === item.key);
+  
+      if (existingItemIndex !== -1) {
+        return {
+          ...prevProductData[existingItemIndex],
+          CantItem: item.CantItem,
+        };
+      }
+  
+      return {
+        key: item.key,
+        CantItem: item.CantItem,
+        ...doc.data(),
+      };
+    });
+  
+    const updatedTotal = updatedProductData.reduce((acc, item) => acc + item.price * item.CantItem, 0);
+  
+    return {
+      productData: updatedProductData,
+      total: updatedTotal,
+    };
+  }, []);
+
 
   const removeItem = useCallback(
     (idProduct) => {
@@ -59,6 +84,7 @@ function CartDetail() {
             CantItem: cantItem,
             ...doc.data(),
           }));
+          setProductData(itemsArray);
           return itemsArray;
         }
       } catch (error) {
@@ -90,26 +116,38 @@ function CartDetail() {
       setIsLoading(false);
     }
   }, []);
-  const total = productData.reduce((acc, item) => acc + item.price * item.CantItem, 0);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    const updatedInfo = await UpdateInfo(productData);
+  
+    setProductData(updatedInfo.productData);
+    setTotal(updatedInfo.total);
+  
     const db = getFirestore();
-
     const collectionRef = collection(db, "orders");
-
+  
     const order = {
       userName: userNameRef.current.value,
       userEmail: userEmailRef.current.value,
-      items: productData,
-      totalPrice: total,
+      items: updatedInfo.productData, 
+      totalPrice: updatedInfo.total,
     };
-
+  
     addDoc(collectionRef, order).then((res) =>
       alert(`The order has been sent successfully, your order number is: ${res.id}`)
     );
   };
+
+  
+  useEffect(() => {
+    if (productData.length > 0) {
+      const total2 = productData.reduce((acc, item) => acc + item.price * item.CantItem, 0);
+      setTotal(total2);
+    }
+  }, [productData]);
+
 
   return (
     <div>
@@ -133,7 +171,7 @@ function CartDetail() {
                 name={item.name}
                 price={item.price}
                 count={item.CantItem}
-                customKey={item.id}
+                customKey={item.key}
                 removeItem={() => removeItem(item.key)}
               />
             </div>
@@ -156,7 +194,7 @@ function CartDetail() {
             <h3 id="titleCartDetail">Purchase Detail</h3>
             <form onSubmit={handleSubmit}>
               <p id="subtotalCart">
-                <strong>Subtotal: $</strong> {total}
+                <strong>Subtotal: $</strong> {Total}
               </p>
               <div className="join" id="inputForm">
                 <input
