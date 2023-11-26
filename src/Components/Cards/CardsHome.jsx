@@ -1,6 +1,6 @@
-import Loading from "../Loading/Loading.jsx"
-import Cards from "../Cards/Cards.jsx"
-import "../Cards/CardsHome.css"
+import Loading from "../Loading/Loading.jsx";
+import Cards from "../Cards/Cards.jsx";
+import "../Cards/CardsHome.css";
 
 function CardsHome(props) {
   return (

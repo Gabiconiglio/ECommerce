@@ -1,4 +1,4 @@
-function AlertConfirm(props) {
+function AlertRed(props) {
   return (
     <>
       <div className="alert alert-error">
@@ -20,4 +20,4 @@ function AlertConfirm(props) {
     </>
   );
 }
-export default AlertConfirm;
+export default AlertRed;

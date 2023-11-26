@@ -1,4 +1,4 @@
-import { React,useState,Context } from "react";
+import { React, useState, Context } from "react";
 import { useToggle } from "../Context/ToggleContext.jsx";
 import { useProductContext } from "../Context/ProductContext.jsx";
 import { FaRegTrashCan } from "react-icons/fa6";
@@ -14,12 +14,15 @@ function CardsDetail(props) {
   const handleCountUpdate = (newCount) => {
     setCount(newCount);
     updateProductState(props.customKey, newCount, props.price);
-    
-  
-    const existingItemsJSON = localStorage.getItem("items");
-    const existingItems = existingItemsJSON ? JSON.parse(existingItemsJSON) : [];
 
-    const existingItemIndex = existingItems.findIndex(item => item.key === props.customKey);
+    const existingItemsJSON = localStorage.getItem("items");
+    const existingItems = existingItemsJSON
+      ? JSON.parse(existingItemsJSON)
+      : [];
+
+    const existingItemIndex = existingItems.findIndex(
+      (item) => item.key === props.customKey
+    );
 
     if (existingItemIndex !== -1) {
       existingItems[existingItemIndex].CantItem = newCount;
@@ -55,10 +58,14 @@ function CardsDetail(props) {
                 />
               </div>
             </div>
-            </div>
-            <button onClick={props.removeItem} className="btn btn-ghost btn-circle" id="trash">
-            <FaRegTrashCan id="iconTrash"/>
-            </button>
+          </div>
+          <button
+            onClick={props.removeItem}
+            className="btn btn-ghost btn-circle"
+            id="trash"
+          >
+            <FaRegTrashCan id="iconTrash" />
+          </button>
         </div>
       </div>
     </>

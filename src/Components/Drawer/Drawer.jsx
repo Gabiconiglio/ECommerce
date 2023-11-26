@@ -91,14 +91,14 @@ function Drawer(props) {
               />
             </div>
           </li>
-          {ranking?
-          <li>
-            <h3 className="titleRanking">
-              <strong>Ranking</strong>
-            </h3>
-            <RangeDrawer />
-          </li>
-          :null}
+          {ranking ? (
+            <li>
+              <h3 className="titleRanking">
+                <strong>Ranking</strong>
+              </h3>
+              <RangeDrawer />
+            </li>
+          ) : null}
         </ul>
       </div>
     </>

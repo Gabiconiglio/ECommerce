@@ -1,5 +1,5 @@
-import "ldrs/ring";
 import { lineSpinner } from "ldrs";
+import "ldrs/ring";
 import "../Loading/Loading.css";
 
 function Loading(props) {

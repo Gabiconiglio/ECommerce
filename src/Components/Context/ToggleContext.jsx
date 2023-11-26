@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from "react";
 
 const ToggleContext = createContext();
 
@@ -15,7 +15,7 @@ export function ToggleProvider({ children }) {
 export function useToggle() {
   const context = useContext(ToggleContext);
   if (context === undefined) {
-    throw new Error('useToggle must be used within a ToggleProvider');
+    throw new Error("useToggle must be used within a ToggleProvider");
   }
   return context;
 }

@@ -1,11 +1,11 @@
-#heros{
+#heros {
   margin-left: 13px;
   margin-right: 13px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-    margin-top: 0px;
+  margin-top: 0px;
 }
-.photoProducts{
+.photoProducts {
   width: 800px;
   height: 260px;
   align-items: center;

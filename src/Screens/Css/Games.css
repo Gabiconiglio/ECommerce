@@ -2,7 +2,7 @@
   margin-top: 326px;
   margin-bottom: 100px;
 }
-#CardProducto{
+#CardProducto {
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 200px;
@@ -12,7 +12,7 @@
   width: calc(25% - 16px);
   margin: 8px;
 }
-.photoGames{
+.photoGames {
   width: 300px;
   height: 300px;
   align-items: center;
@@ -21,6 +21,6 @@
   margin: 0 auto;
   margin-top: 1px;
 }
-#SepGames{
+#SepGames {
   margin-bottom: 70px;
 }

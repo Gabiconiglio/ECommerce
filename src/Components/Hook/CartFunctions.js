@@ -3,6 +3,8 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { getFirestore, collection, query, where, getDocs} from "firebase/firestore";
 import { CounterContext } from "../Context/CounterContext.jsx";
 import { useToggle } from "../Context/ToggleContext.jsx";
+
+
 export const useCartFunctions = () => {
   const { isChecked } = useToggle();
   const { items, setItems } = useContext(CounterContext);

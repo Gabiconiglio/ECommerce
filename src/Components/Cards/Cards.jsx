@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useToggle } from "../Context/ToggleContext.jsx";
 import { AiOutlineInfoCircle } from "react-icons/ai";
-import { useNavigate,Link} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import ModalDetail from "../ModalDetail/ModalDetail.jsx";
 import "../Cards/Cards.css";
 
@@ -20,14 +20,14 @@ function Cards(props) {
     }, 0);
     if (Screen === "Home") {
       navigate(`/Detail/${props.customKey}`);
-      setUrl(`/Detail/${props.customKey}`)
+      setUrl(`/Detail/${props.customKey}`);
     } else {
       if (Screen === "Search") {
         navigate(`/Search/${query}/Detail/${props.customKey}`);
-        setUrl(`/Search/${query}/Detail/${props.customKey}`)
+        setUrl(`/Search/${query}/Detail/${props.customKey}`);
       } else {
         navigate(`/Productos/${props.category}/Detail/${props.customKey}`);
-        setUrl(`/Productos/${props.category}/Detail/${props.customKey}`)
+        setUrl(`/Productos/${props.category}/Detail/${props.customKey}`);
       }
     }
   };
@@ -44,7 +44,6 @@ function Cards(props) {
       }
     }
   };
-
 
   return (
     <>
@@ -93,7 +92,7 @@ function Cards(props) {
               onClick={openModal}
             >
               <Link to={url}>
-              <AiOutlineInfoCircle id="iconoModalInfo" />
+                <AiOutlineInfoCircle id="iconoModalInfo" />
               </Link>
             </button>
           </form>

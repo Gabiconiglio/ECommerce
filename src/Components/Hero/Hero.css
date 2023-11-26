@@ -16,15 +16,14 @@
   text-align: justify;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-
 }
 #imagenHero {
   height: 100px;
   width: 150px;
 }
 #botonHero {
-    height: 30px; 
-    margin-top: auto;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  height: 30px;
+  margin-top: auto;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }

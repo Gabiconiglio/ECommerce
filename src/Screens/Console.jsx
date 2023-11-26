@@ -1,15 +1,14 @@
-import { React} from "react";
-import UseFirestoreData from "../Components/Hook/useFetchFire.js"
-import Loading from "../Components/Loading/Loading.jsx"
+import { React } from "react";
+import UseFirestoreData from "../Components/Hook/useFetchFire.js";
+import Loading from "../Components/Loading/Loading.jsx";
 import Cards from "../Components/Cards/Cards.jsx";
 import Drawer from "../Components/Drawer/Drawer.jsx";
 import TxtConsole from "../Components/Imagines/TxtConsole.png";
 import "../Screens/Css/Console.css";
 
 function Console() {
+  const { ItemCard, loading } = UseFirestoreData("Games","category","Console");
 
-  const { ItemCard, loading } = UseFirestoreData('Games','category', 'Console');
- 
   return (
     <div>
       <div className="flex">

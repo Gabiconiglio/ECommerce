@@ -5,7 +5,7 @@ import "../Bell/Bell.css";
 
 function Bell() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const {items} = useContext(CounterContext)
+  const { items } = useContext(CounterContext);
 
   const handleButtonClick = () => {
     setIsMenuOpen(!isMenuOpen);

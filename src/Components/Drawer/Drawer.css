@@ -2,21 +2,23 @@
   width: 400px;
   margin-right: 40px;
 }
-.titleDrawer{
+.titleDrawer {
   font-size: 20px;
   margin-top: 10px;
   display: flex;
   text-align: center;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
-#imputPrice{
+#imputPrice {
   width: 245px;
 }
-.titlePlataform,.titleRanking,.titlePrice{
+.titlePlataform,
+.titleRanking,
+.titlePrice {
   font-size: 15px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-  "Lucida Sans", Arial, sans-serif;
+    "Lucida Sans", Arial, sans-serif;
 }

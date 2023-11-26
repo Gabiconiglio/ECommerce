@@ -16,7 +16,6 @@ function CartDetail() {
 
     const updatedInfo = await UpdateInfo(productData);
 
-   
     setProductData(updatedInfo.productData);
     setTotal(updatedInfo.total);
 
@@ -36,7 +35,7 @@ function CartDetail() {
   };
 
   return (
-    <div>
+    <>
       <h3 id="textCartDetail">Cart Detail</h3>
       {text ? (
         <p id="textEmptycart" className="join">
@@ -87,7 +86,7 @@ function CartDetail() {
           </div>
         </>
       ) : null}
-    </div>
+    </>
   );
 }
 

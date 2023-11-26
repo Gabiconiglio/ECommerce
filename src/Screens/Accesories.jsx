@@ -7,11 +7,7 @@ import TxtAccessories from "../Components/Imagines/TxtAccessories.jpg";
 import "../Screens/Css/Accessories.css";
 
 function Accessories() {
-  const { ItemCard, loading } = UseFirestoreData(
-    "Games",
-    "category",
-    "Accessories"
-  );
+  const { ItemCard } = UseFirestoreData("Games", "category", "Accessories");
 
   return (
     <div>
