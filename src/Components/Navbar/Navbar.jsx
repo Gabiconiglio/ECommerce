@@ -1,4 +1,4 @@
-import { React, useContext } from "react";
+import { React, useContext,useEffect,useState } from "react";
 import { CounterContext } from "../Context/CounterContext.jsx";
 import { FiSun } from "react-icons/fi"; 
 import { BiMoon } from "react-icons/bi"; 
@@ -12,11 +12,9 @@ import Bell from "../Bell/Bell";
 import "./Navbar.css";
 
 
-
 function Navbar() {
   const { isChecked, setIsChecked } = useToggle();
   const {items} = useContext(CounterContext)
-
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   }
@@ -117,7 +115,7 @@ function Navbar() {
                   <span className="badge badge-sm indicator-item">{items}</span>
                 </div>
               </label>
-              <Cart />
+              <Cart/>
             </div>
             <Bell/>
           </div>

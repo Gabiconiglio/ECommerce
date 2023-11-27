@@ -28,6 +28,7 @@ function Diagram() {
           <Route path="/Productos/Accessories" element={<Accessories />} />
           <Route path="/Productos/Accessories/Detail/:id" element={<Accessories  />} />
           <Route path="/Productos/TechnicalService" element={<TechnicalService />} />
+          <Route path="/Productos/TechnicalService/Detail/:id" element={<TechnicalService />} />
           <Route path="/Search/:query" element={<SearchScreen/>} />
           <Route path="/Search/:query/Detail/:id" element={<SearchScreen/>} />
           <Route path="/CartDetail" element={<CartDetail />} />
