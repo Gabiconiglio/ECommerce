@@ -1,22 +1,24 @@
-import { React, useState,useRef} from "react";
+import { React, useState, useRef } from "react";
 import { useToggle } from "../Context/ToggleContext.jsx";
-import Checkbox from "../CheckBox/CheckBox.jsx";
-import RangeDrawer from "../Range/Range.jsx";
 import RadioButton from "../RadioButton/RadioButton.jsx";
 import "../Drawer/Drawer.css";
 
-function Drawer({ plat, rank, filter }) {
+function Drawer({ format, plat, filter }) {
   const { isChecked } = useToggle();
+  const [selectedFormat, setselectedFormat] = useState("");
   const [selectedPlatform, setSelectedPlatform] = useState("");
   const [selectedConditions, setselectedConditions] = useState("");
+  const Format = format;
   const plataform = plat;
-  const ranking = rank;
   const minPriceRef = useRef(0);
   const maxPriceRef = useRef(0);
 
-  const min= minPriceRef.current.value;
-  const max= maxPriceRef.current.value;
+  const min = minPriceRef.current.value;
+  const max = maxPriceRef.current.value;
 
+  const handleFormatChange = (format) => {
+    setselectedFormat(format);
+  };
 
   const handlePlatformChange = (platform) => {
     setSelectedPlatform(platform);
@@ -27,10 +29,31 @@ function Drawer({ plat, rank, filter }) {
   };
 
   const handleChangeFilters = () => {
-    filter({ console: selectedPlatform, conditions: selectedConditions,minPrice:min,maxPrice:max });
+    filter({
+      console: selectedPlatform,
+      conditions: selectedConditions,
+      minPrice: min,
+      maxPrice: max,
+      format: selectedFormat,
+    });
   };
 
- 
+  const handleCleanFilters = () => {
+    filter({
+      console: "",
+      conditions: "",
+      minPrice: "",
+      maxPrice: "",
+      format: "",
+    });
+    setSelectedPlatform("");
+    setselectedFormat("");
+    setselectedConditions("");
+    min = "";
+    max = "";
+    minPriceRef.current.value = "";
+    maxPriceRef.current.value = "";
+  };
 
   return (
     <>
@@ -44,7 +67,10 @@ function Drawer({ plat, rank, filter }) {
         <h3 className="titleDrawer">Search Filters</h3>
         <ul>
           <li>
-            <label className={`custom-checkbox ${selectedConditions === 'Used' ? 'selected' : ''}`}>
+            <h3 className="tittleConditionDrawer">
+              <strong>Conditions</strong>
+            </h3>
+            <label id="InfoDrawer">
               <input
                 type="checkbox"
                 checked={selectedConditions === "New"}
@@ -52,7 +78,7 @@ function Drawer({ plat, rank, filter }) {
               />
               New
             </label>
-            <label className={`custom-checkbox ${selectedConditions === 'Used' ? 'selected' : ''}`}>
+            <label id="InfoDrawer">
               <input
                 type="checkbox"
                 checked={selectedConditions === "Used"}
@@ -61,54 +87,74 @@ function Drawer({ plat, rank, filter }) {
               Used
             </label>
           </li>
-          {plataform ? (
+          {Format ? (
             <li>
-              <Checkbox
-                title={"Format"}
-                condition1={"Physical"}
-                condition2={"Digital"}
-              />
+              <h3 className="tittleFormaDrawer">
+                <strong>Format</strong>
+              </h3>
+              <label id="InfoDrawer">
+                <input
+                  type="checkbox"
+                  checked={selectedFormat === "Digital"}
+                  onChange={() => handleFormatChange("Digital")}
+                />
+                Digital
+              </label>
+              <label id="InfoDrawer">
+                <input
+                  type="checkbox"
+                  checked={selectedFormat === "Physical"}
+                  onChange={() => handleFormatChange("Physical")}
+                />
+                Physical
+              </label>
             </li>
           ) : null}
           <div>
             <li>
-              <h3 className="titlePlataform">
+              <h3 className="titlePlataformDrawer">
                 <strong>Platform</strong>
               </h3>
               <RadioButton
                 name="PC"
                 checked={selectedPlatform === "PC"}
                 onChange={() => handlePlatformChange("PC")}
+                id="InfoDrawer"
               />
               <RadioButton
                 name="Ps5"
                 checked={selectedPlatform === "Ps5"}
                 onChange={() => handlePlatformChange("Ps5")}
+                id="InfoDrawer"
               />
               <RadioButton
                 name="Ps4"
                 checked={selectedPlatform === "Ps4"}
                 onChange={() => handlePlatformChange("Ps4")}
+                id="InfoDrawer"
               />
               <RadioButton
                 name="Switch"
                 checked={selectedPlatform === "Switch"}
                 onChange={() => handlePlatformChange("Switch")}
+                id="InfoDrawer"
               />
               <RadioButton
                 name="Xbox"
                 checked={selectedPlatform === "Xbox"}
                 onChange={() => handlePlatformChange("Xbox")}
+                id="InfoDrawer"
               />
               <RadioButton
                 name="All"
                 checked={selectedPlatform === ""}
                 onChange={() => handlePlatformChange("")}
+                id="InfoDrawer"
               />
             </li>
           </div>
           <li>
-            <h3 className="titlePrice">
+            <h3 className="titlePriceDrawer">
               <strong>Price</strong>
             </h3>
             <div className="input-container" id="imputPrice">
@@ -126,22 +172,23 @@ function Drawer({ plat, rank, filter }) {
               />
             </div>
           </li>
-          {ranking ? (
-            <li>
-              <h3 className="titleRanking">
-                <strong>Ranking</strong>
-              </h3>
-              <RangeDrawer />
-            </li>
-          ) : null}
         </ul>
-        <button
-          className="btn btn-outline"
-          id="btnDrawer"
-          onClick={handleChangeFilters}
-        >
-          Apply Filter
-        </button>
+        <div id="BtnsDrawers">
+          <button
+            className="btn btn-outline"
+            id="btnDrawer"
+            onClick={handleChangeFilters}
+          >
+            Apply Filter
+          </button>
+          <button
+            className="btn btn-outline"
+            id="btnDrawerClean"
+            onClick={handleCleanFilters}
+          >
+            Clean filters
+          </button>
+        </div>
       </div>
     </>
   );

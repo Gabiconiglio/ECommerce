@@ -15,22 +15,37 @@
 #imputPrice {
   width: 245px;
 }
-.titlePlataform,
-.titleRanking,
-.titlePrice {
+.titlePlataformDrawer,
+.titleRankingDrawer,
+.titlePriceDrawer,
+.tittleFormaDrawer,
+.tittleConditionDrawer {
   font-size: 15px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
-#btnDrawer{
+#btnDrawer {
   margin-top: 20px;
 }
 .custom-checkbox {
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-size: 15px; 
-  color: black; 
+  font-size: 15px;
+  color: black;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+}
+.custom-checkbox.selected {
+  color: gray;
+}
+#InfoDrawer {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+#btnDrawerClean {
+  margin-left: 10px;
+}
+#BtnsDrawers {
+  margin: 0 auto;
 }

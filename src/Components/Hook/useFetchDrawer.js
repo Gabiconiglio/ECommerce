@@ -42,6 +42,7 @@ const useFetchDrawer = (collectionName, condition, category, filters) => {
 
         if (res.size === 0) {
           console.log('No results');
+          alert("There are no results for this search.")
         } else {
           setItems(res.docs.map(doc => ({ id: doc.id, ...doc.data() })));
         }

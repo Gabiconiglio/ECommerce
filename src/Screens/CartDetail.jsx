@@ -39,7 +39,7 @@ function CartDetail() {
       <h3 id="textCartDetail">Cart Detail</h3>
       {text ? (
         <p id="textEmptycart" className="join">
-          <CiGift id="Gift" />I do not add any products to the shopping cart!!
+          <CiGift id="Gift" />You dont have any products in the shopping cart!!
         </p>
       ) : null}
       {isLoading ? (
