@@ -1,19 +1,36 @@
-import { React, useState } from "react";
+import { React, useState,useRef} from "react";
 import { useToggle } from "../Context/ToggleContext.jsx";
 import Checkbox from "../CheckBox/CheckBox.jsx";
 import RangeDrawer from "../Range/Range.jsx";
 import RadioButton from "../RadioButton/RadioButton.jsx";
 import "../Drawer/Drawer.css";
 
-function Drawer(props) {
+function Drawer({ plat, rank, filter }) {
+  const { isChecked } = useToggle();
   const [selectedPlatform, setSelectedPlatform] = useState("");
-  const plataform = props.plat;
-  const ranking = props.ranking;
+  const [selectedConditions, setselectedConditions] = useState("");
+  const plataform = plat;
+  const ranking = rank;
+  const minPriceRef = useRef(0);
+  const maxPriceRef = useRef(0);
+
+  const min= minPriceRef.current.value;
+  const max= maxPriceRef.current.value;
+
 
   const handlePlatformChange = (platform) => {
     setSelectedPlatform(platform);
   };
-  const { isChecked } = useToggle();
+
+  const handleConditionsChange = (condition) => {
+    setselectedConditions(condition);
+  };
+
+  const handleChangeFilters = () => {
+    filter({ console: selectedPlatform, conditions: selectedConditions,minPrice:min,maxPrice:max });
+  };
+
+ 
 
   return (
     <>
@@ -27,11 +44,22 @@ function Drawer(props) {
         <h3 className="titleDrawer">Search Filters</h3>
         <ul>
           <li>
-            <Checkbox
-              title={"Conditions"}
-              condition1={"New"}
-              condition2={"Used"}
-            />
+            <label className={`custom-checkbox ${selectedConditions === 'Used' ? 'selected' : ''}`}>
+              <input
+                type="checkbox"
+                checked={selectedConditions === "New"}
+                onChange={() => handleConditionsChange("New")}
+              />
+              New
+            </label>
+            <label className={`custom-checkbox ${selectedConditions === 'Used' ? 'selected' : ''}`}>
+              <input
+                type="checkbox"
+                checked={selectedConditions === "Used"}
+                onChange={() => handleConditionsChange("Used")}
+              />
+              Used
+            </label>
           </li>
           {plataform ? (
             <li>
@@ -72,6 +100,11 @@ function Drawer(props) {
                 checked={selectedPlatform === "Xbox"}
                 onChange={() => handlePlatformChange("Xbox")}
               />
+              <RadioButton
+                name="All"
+                checked={selectedPlatform === ""}
+                onChange={() => handlePlatformChange("")}
+              />
             </li>
           </div>
           <li>
@@ -80,11 +113,13 @@ function Drawer(props) {
             </h3>
             <div className="input-container" id="imputPrice">
               <input
+                ref={minPriceRef}
                 type="text"
                 placeholder="Min Price"
                 className="input input-bordered w-full max-w-xs"
               />
               <input
+                ref={maxPriceRef}
                 type="text"
                 placeholder="Max Price"
                 className="input input-bordered w-full max-w-xs"
@@ -100,6 +135,13 @@ function Drawer(props) {
             </li>
           ) : null}
         </ul>
+        <button
+          className="btn btn-outline"
+          id="btnDrawer"
+          onClick={handleChangeFilters}
+        >
+          Apply Filter
+        </button>
       </div>
     </>
   );
