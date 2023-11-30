@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { IoIosLogIn } from "react-icons/Io";
+import { IoIosLogIn } from "react-icons/io";
 import { RxAvatar } from "react-icons/Rx";
 import ModalLogIn from "../ModalLogIn/ModalLogIn.jsx";
 import "../Login/Login.css";
