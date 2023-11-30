@@ -1,4 +1,4 @@
-import Avatar from "../Components/Imagines/Avatar.jpg";
+import cv from "../Components/Imagines/cv.jpg";
 import "../Screens/Css/About.css";
 
 function About() {
@@ -6,7 +6,7 @@ function About() {
     <div>
       <h3 id="tituloAbout">About OlympusGG</h3>
       <div className="join" id="conteinerAbout">
-        <img src={Avatar} alt="Avatar" id="ImagAbout" />
+        <img src={cv} alt="Avatar" id="ImagAbout" />
         <div id="infoAbout">
           <p>
             <strong>Full Name: </strong> Gabriel Eduardo Coniglio
@@ -27,18 +27,17 @@ function About() {
             <strong>Customer: </strong> Claro
           </p>
           <p>
-            <strong>Description: </strong> My name is Gabriel and I am a student
-            studying Programming Technology at the National Technological
-            University of Córdoba.
-            <br />I am currently in my second year and have gained experience in
-            Java, SQL, HTML, CSS and React.
-            <br />I consider myself a proactive person, curious and committed to
-            my studies.
-            <br />I value punctuality and formality in all my activities, as I
-            believe they are fundamental aspects for academic and professional
-            success.
-            <br />I am excited to continue learning and contribute to the world
-            of programming with my skills and knowledge.
+            <strong>Description: </strong> My name is Gabriel, and I am
+            currently enrolled in the Programming Technology program at
+            Universidad Tecnológica Nacional de Córdoba (UTN).
+            <br /> I am in my second year, where I have gained experience in
+            Java, SQL, HTML, CSS, and React. I consider myself a proactive,
+            curious, and committed individual.
+            <br /> Punctuality and formality are of significant importance in
+            all my activities, as they serve as fundamental aspects for academic
+            and professional success.
+            <br /> I am enthusiastic about continuing to learn and contributing
+            to the world of development with my skills and knowledge.
           </p>
         </div>
       </div>

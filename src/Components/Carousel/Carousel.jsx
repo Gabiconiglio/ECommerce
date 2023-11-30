@@ -8,7 +8,7 @@ import Servicio from "../Imagines/Servicio.jpg";
 import "../Carousel/Carousel.css";
 
 function Carousel() {
-  const { isChecked} = useToggle();
+  const { isChecked } = useToggle();
 
   return (
     <>

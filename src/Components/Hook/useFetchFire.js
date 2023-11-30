@@ -1,7 +1,13 @@
-import { useEffect, useState } from 'react';
-import { getFirestore, collection, query, where, getDocs} from 'firebase/firestore';
+import { useEffect, useState } from "react";
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 
-const UseFirestoreData = (collectionName,condition,category) => {
+const UseFirestoreData = (collectionName, condition, category) => {
   const [ItemCard, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -9,18 +15,18 @@ const UseFirestoreData = (collectionName,condition,category) => {
     const fetchData = async () => {
       const db = getFirestore();
       const itemsRef = collection(db, collectionName);
-      const queryFilter = query(itemsRef, where(condition, '==', category));
+      const queryFilter = query(itemsRef, where(condition, "==", category));
 
       try {
         const res = await getDocs(queryFilter);
 
         if (res.size === 0) {
-          console.log('No results');
+          console.log("No results");
         } else {
-          setItems(res.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+          setItems(res.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }

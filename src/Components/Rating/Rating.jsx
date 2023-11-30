@@ -1,13 +1,13 @@
-import {React} from "react";
+import { React } from "react";
 import "../Rating/Rating.css";
 
-function Rating({ Rank,color}) {
+function Rating({ Rank, color }) {
   const maxRating = 5;
   const rating = parseInt(Rank);
   const renderStars = () => {
     const stars = [];
-    const idc=color+"rat"
-    const idc2=color+"rat2"
+    const idc = color + "rat";
+    const idc2 = color + "rat2";
 
     for (let i = 1; i <= rating; i++) {
       const isChecked = i <= rating;
@@ -30,7 +30,7 @@ function Rating({ Rank,color}) {
           name="rating"
           className="mask mask-star-2"
           id={idc2}
-          key={i + Rank} 
+          key={i + Rank}
           disabled
         />
       );

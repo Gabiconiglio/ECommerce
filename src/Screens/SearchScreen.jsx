@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../Components/Loading/Loading.jsx";
 import Cards from "../Components/Cards/Cards.jsx";
-import UseFirestoreData from "../Components/Hook/useFetchFire.js";
+// import UseFirestoreData from "../Components/Hook/useFetchFire.js";
+import useFetchSearch from "../Components/Hook/useFetchSearch.js"
 import "../Screens/Css/SearchScreen.css";
 
 function SearchScreen() {
   const { query } = useParams();
-  const { ItemCard } = UseFirestoreData("Games", "console", query);
+  // const { ItemCard } = UseFirestoreData("Games", "console", query);
+  const { ItemCard } = useFetchSearch("Games", query);
 
   return (
     <>

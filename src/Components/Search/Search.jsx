@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AlertConfirm from "../Alert/Alert.jsx"
 import "./Search.css";
 
 function Search() {
@@ -12,7 +11,7 @@ function Search() {
       alert("To do the search you must enter a character.");
     } else {
       navigate(`/Search/${input}`);
-      setInput("")
+      setInput("");
     }
   };
 

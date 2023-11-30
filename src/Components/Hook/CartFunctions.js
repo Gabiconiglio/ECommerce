@@ -1,9 +1,14 @@
-import { React,useContext} from "react";
+import { React, useContext } from "react";
 import { useEffect, useRef, useState, useCallback } from "react";
-import { getFirestore, collection, query, where, getDocs} from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 import { CounterContext } from "../Context/CounterContext.jsx";
 import { useToggle } from "../Context/ToggleContext.jsx";
-
 
 export const useCartFunctions = () => {
   const { isChecked } = useToggle();
@@ -18,10 +23,14 @@ export const useCartFunctions = () => {
 
   const UpdateInfo = useCallback((prevProductData) => {
     const existingItemsJSON = localStorage.getItem("items");
-    const existingItems = existingItemsJSON ? JSON.parse(existingItemsJSON) : [];
+    const existingItems = existingItemsJSON
+      ? JSON.parse(existingItemsJSON)
+      : [];
 
     const updatedProductData = existingItems.map((item) => {
-      const existingItemIndex = prevProductData.findIndex((product) => product.key === item.key);
+      const existingItemIndex = prevProductData.findIndex(
+        (product) => product.key === item.key
+      );
 
       if (existingItemIndex !== -1) {
         return {
@@ -33,11 +42,14 @@ export const useCartFunctions = () => {
       return {
         key: item.key,
         CantItem: item.CantItem,
-        ...doc.data(), 
+        ...doc.data(),
       };
     });
 
-    const updatedTotal = updatedProductData.reduce((acc, item) => acc + item.price * item.CantItem, 0);
+    const updatedTotal = updatedProductData.reduce(
+      (acc, item) => acc + item.price * item.CantItem,
+      0
+    );
 
     return {
       productData: updatedProductData,
@@ -49,8 +61,11 @@ export const useCartFunctions = () => {
     (idProduct) => {
       const filteredCart = productData.filter((item) => item.key !== idProduct);
       setProductData(filteredCart);
-      const cantItemUpd = filteredCart.reduce((acc, item) => acc + item.CantItem, 0);
-      setItems(cantItemUpd)
+      const cantItemUpd = filteredCart.reduce(
+        (acc, item) => acc + item.CantItem,
+        0
+      );
+      setItems(cantItemUpd);
       localStorage.setItem("items", JSON.stringify(filteredCart));
       alert(`the product ${idProduct} was deleted correctly `);
     },
@@ -62,7 +77,7 @@ export const useCartFunctions = () => {
     localStorage.setItem("items", JSON.stringify([]));
     localStorage.setItem("cartItems", JSON.stringify(0));
     alert("Cart was deleted correctly!!");
-    setItems(0)
+    setItems(0);
     setText(true);
     setbtnEmpty(false);
   }, [productData]);
@@ -119,12 +134,27 @@ export const useCartFunctions = () => {
 
   useEffect(() => {
     if (productData.length > 0) {
-      const total2 = productData.reduce((acc, item) => acc + item.price * item.CantItem, 0);
+      const total2 = productData.reduce(
+        (acc, item) => acc + item.price * item.CantItem,
+        0
+      );
       setTotal(total2);
     }
   }, [productData]);
 
-  return {isChecked,productData,Total,isLoading,text,btnEmpty,userNameRef,userEmailRef,UpdateInfo,removeItem
-    ,removeAllItem,setProductData,setTotal
+  return {
+    isChecked,
+    productData,
+    Total,
+    isLoading,
+    text,
+    btnEmpty,
+    userNameRef,
+    userEmailRef,
+    UpdateInfo,
+    removeItem,
+    removeAllItem,
+    setProductData,
+    setTotal,
   };
 };

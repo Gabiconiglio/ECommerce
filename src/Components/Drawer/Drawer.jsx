@@ -49,8 +49,6 @@ function Drawer({ format, plat, filter }) {
     setSelectedPlatform("");
     setselectedFormat("");
     setselectedConditions("");
-    min = "";
-    max = "";
     minPriceRef.current.value = "";
     maxPriceRef.current.value = "";
   };
@@ -73,16 +71,16 @@ function Drawer({ format, plat, filter }) {
             <label id="InfoDrawer">
               <input
                 type="checkbox"
-                checked={selectedConditions === "New"}
-                onChange={() => handleConditionsChange("New")}
+                checked={selectedConditions === "new"}
+                onChange={() => handleConditionsChange("new")}
               />
               New
             </label>
             <label id="InfoDrawer">
               <input
                 type="checkbox"
-                checked={selectedConditions === "Used"}
-                onChange={() => handleConditionsChange("Used")}
+                checked={selectedConditions === "used"}
+                onChange={() => handleConditionsChange("used")}
               />
               Used
             </label>
@@ -95,16 +93,16 @@ function Drawer({ format, plat, filter }) {
               <label id="InfoDrawer">
                 <input
                   type="checkbox"
-                  checked={selectedFormat === "Digital"}
-                  onChange={() => handleFormatChange("Digital")}
+                  checked={selectedFormat === "digital"}
+                  onChange={() => handleFormatChange("digital")}
                 />
                 Digital
               </label>
               <label id="InfoDrawer">
                 <input
                   type="checkbox"
-                  checked={selectedFormat === "Physical"}
-                  onChange={() => handleFormatChange("Physical")}
+                  checked={selectedFormat === "physical"}
+                  onChange={() => handleFormatChange("physical")}
                 />
                 Physical
               </label>
@@ -117,32 +115,32 @@ function Drawer({ format, plat, filter }) {
               </h3>
               <RadioButton
                 name="PC"
-                checked={selectedPlatform === "PC"}
-                onChange={() => handlePlatformChange("PC")}
+                checked={selectedPlatform === "pc"}
+                onChange={() => handlePlatformChange("pc")}
                 id="InfoDrawer"
               />
               <RadioButton
                 name="Ps5"
-                checked={selectedPlatform === "Ps5"}
-                onChange={() => handlePlatformChange("Ps5")}
+                checked={selectedPlatform === "ps5"}
+                onChange={() => handlePlatformChange("ps5")}
                 id="InfoDrawer"
               />
               <RadioButton
                 name="Ps4"
-                checked={selectedPlatform === "Ps4"}
-                onChange={() => handlePlatformChange("Ps4")}
+                checked={selectedPlatform === "ps4"}
+                onChange={() => handlePlatformChange("ps4")}
                 id="InfoDrawer"
               />
               <RadioButton
                 name="Switch"
-                checked={selectedPlatform === "Switch"}
-                onChange={() => handlePlatformChange("Switch")}
+                checked={selectedPlatform === "switch"}
+                onChange={() => handlePlatformChange("switch")}
                 id="InfoDrawer"
               />
               <RadioButton
                 name="Xbox"
-                checked={selectedPlatform === "Xbox"}
-                onChange={() => handlePlatformChange("Xbox")}
+                checked={selectedPlatform === "xbox"}
+                onChange={() => handlePlatformChange("xbox")}
                 id="InfoDrawer"
               />
               <RadioButton

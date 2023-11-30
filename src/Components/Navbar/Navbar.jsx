@@ -1,7 +1,7 @@
-import { React, useContext,useEffect,useState } from "react";
+import { React, useContext } from "react";
 import { CounterContext } from "../Context/CounterContext.jsx";
-import { FiSun } from "react-icons/fi"; 
-import { BiMoon } from "react-icons/bi"; 
+import { FiSun } from "react-icons/fi";
+import { BiMoon } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useToggle } from "../Context/ToggleContext";
 import Cart from "../Cart/Cart";
@@ -11,13 +11,12 @@ import Login from "../Login/Login";
 import Bell from "../Bell/Bell";
 import "./Navbar.css";
 
-
 function Navbar() {
   const { isChecked, setIsChecked } = useToggle();
-  const {items} = useContext(CounterContext)
+  const { items } = useContext(CounterContext);
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
-  }
+  };
 
   return (
     <>
@@ -49,7 +48,6 @@ function Navbar() {
             <ul
               tabIndex={30}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-              
             >
               <Link to={"/"}>
                 <li>
@@ -83,7 +81,7 @@ function Navbar() {
           </Link>
         </div>
         <div className="navbar-end" id="ladoIzq">
-          {isChecked ? <FiSun id="iconoToggle" /> : <BiMoon id="iconoToggle"/>}
+          {isChecked ? <FiSun id="iconoToggle" /> : <BiMoon id="iconoToggle" />}
           <div>
             <input
               type="checkbox"
@@ -115,9 +113,9 @@ function Navbar() {
                   <span className="badge badge-sm indicator-item">{items}</span>
                 </div>
               </label>
-              <Cart/>
+              <Cart />
             </div>
-            <Bell/>
+            <Bell />
           </div>
           <Login />
         </div>
@@ -127,4 +125,3 @@ function Navbar() {
 }
 
 export default Navbar;
-

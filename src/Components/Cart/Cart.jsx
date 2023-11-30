@@ -1,15 +1,15 @@
-import { React, useContext,useEffect,useState} from "react";
-import {useCartFunctions} from "../Hook/CartFunctions.js"
+import { React, useContext, useEffect, useState } from "react";
+import { useCartFunctions } from "../Hook/CartFunctions.js";
 import { Link } from "react-router-dom";
 import { CounterContext } from "../Context/CounterContext.jsx";
 import { useProductContext } from "../Context/ProductContext.jsx";
 import "../Cart/Cart.css";
 
 function Cart() {
-  const {productData} = useCartFunctions();
+  const { productData } = useCartFunctions();
   const { items } = useContext(CounterContext);
   const { productStates } = useProductContext();
-  const[subtotalCart,setsubtotalCart] = useState("")
+  const [subtotalCart, setsubtotalCart] = useState("");
 
   useEffect(() => {
     let subtotal = 0;
@@ -24,11 +24,10 @@ function Cart() {
         subtotal += productSubtotal;
       }
     }
-    
-    setsubtotalCart(subtotal)
+
+    setsubtotalCart(subtotal);
   }, [productStates]);
 
- 
   return (
     <>
       <div

@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import {getFirestore,getDocs,collection,orderBy,query,limit} from "firebase/firestore";
+import {
+  getFirestore,
+  getDocs,
+  collection,
+  orderBy,
+  query,
+  limit,
+} from "firebase/firestore";
 
 const useFetchProduct = () => {
   const [items, setItems] = useState([]);

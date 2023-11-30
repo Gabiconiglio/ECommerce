@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import { React, useEffect, useState, useContext } from "react";
 import { CounterContext } from "../Context/CounterContext.jsx";
 import { useToggle } from "../Context/ToggleContext.jsx";
 import { useProductContext } from "../Context/ProductContext.jsx";
@@ -10,9 +10,9 @@ import Rating from "../Rating/Rating.jsx";
 import Loading from "../Loading/Loading.jsx";
 import "../ModalDetail/ModalDetail.css";
 
-function ModalDetail({ closeModal, customKey, price}) {
+function ModalDetail({ closeModal, customKey, price }) {
   const { isChecked } = useToggle();
-  const { ItemCard} = UseFirestoreData("Games", "key", customKey);
+  const { ItemCard } = UseFirestoreData("Games", "key", customKey);
   const { items, setItems } = useContext(CounterContext);
   const [isLoading, setIsLoading] = useState(true);
   const [showAlert, setShowAlert] = useState(false);
@@ -27,20 +27,22 @@ function ModalDetail({ closeModal, customKey, price}) {
       updateProductState(customKey, count, price);
       setItems((prevItems) => prevItems + count);
       setShowAlert(true);
-  
+
       const existingItemsJSON = localStorage.getItem("items");
-      const existingItems = existingItemsJSON ? JSON.parse(existingItemsJSON) : [];
-  
-      const existingItemIndex = existingItems.findIndex(item => item.id === customKey);
-  
+      const existingItems = existingItemsJSON
+        ? JSON.parse(existingItemsJSON)
+        : [];
+
+      const existingItemIndex = existingItems.findIndex(
+        (item) => item.id === customKey
+      );
+
       if (existingItemIndex !== -1) {
-      
         const existingQuantity = existingItems[existingItemIndex].CantItem;
-  
+
         const diferenciaCantidad = count - existingQuantity;
 
         existingItems[existingItemIndex].CantItem += diferenciaCantidad;
-
       } else {
         const newItem = {
           key: customKey,
@@ -48,7 +50,7 @@ function ModalDetail({ closeModal, customKey, price}) {
         };
         existingItems.push(newItem);
       }
-  
+
       localStorage.setItem("items", JSON.stringify(existingItems));
     } else {
       setShowAlert2(true);
@@ -78,7 +80,7 @@ function ModalDetail({ closeModal, customKey, price}) {
 
     return () => clearTimeout(timeout);
   }, []);
-  
+
   return (
     <dialog
       id="my_modal_2"
